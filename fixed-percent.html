@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>固定定位元素中的百分比值</title>
+	<style type="text/css">
+		.container{
+			position: relative;
+			width:500px;
+			height:400px;
+			background-color:green;
+		}
+		.fixed-div{
+			/**
+			 * 元素定位为固定定位时，百分比数值是相对于body而言的（除了line－height），
+			 * 而且只有部分属性有效，包括：padding、margin、top、left、width、height；
+			 *
+ 			 * width百分比是相对于body的宽度而言；
+ 			 * left、right百分比是相对于body的宽度而言；
+			 * padding百分比是相对于body的宽度而言；
+			 * margin百分比是相对于body的宽度而言；
+			 * 
+			 * top、bottom百分比是相对于body的高度而言；
+			 * height百分比是相对于body的高度而言；
+			 * 
+			 * line-height百分比是相当于字体固定时每行默认高度而言；
+			 */
+			padding:5%;
+			margin:5%;
+			top:25%;
+			left:25%;
+			width:25%;
+			height:25%;
+			font-size:15px;
+			line-height:200%;
+			position:fixed;
+			background-color:red;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="fixed-div">this is a fixed div</div>
+	</div>
+	<div class="fixed-div">this is a fixed div</div>
+</body>
+</html>

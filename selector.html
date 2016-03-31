@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器</title>
+	<style>
+		/* 目标伪类选择器 */
+		p:target{
+			border: 2px solid #D4D4D4;
+			background-color: #e5eecc;
+		}
+		.first li:nth-child(2){
+			color:red;
+			margin-bottom:44px;
+		}
+		/* :nth-of-type只能是元素标签名称 */
+		.first .item:nth-of-type(2),
+		.first li:nth-of-type(2){
+			margin-top:44px;
+		}
+		/* 如果body里边第二个元素是p元素那么就赋值以下样式 */
+		body p:nth-child(2){
+			color:red;
+			margin-bottom:44px;
+		}
+		/* 给body里边的第二个p元素赋值以下样式 */
+		body p:nth-of-type(2){
+			color:red;
+			margin-bottom:44px;
+		}
+	</style>
+</head>
+<body class="body">
+	<p><a href="#target1">target1</a></p>
+	<div>div 1</div>
+	<p><a href="#target2">target2</a></p>
+	<p id="target1">target1</p>
+	<p id="target2">target2</p>
+	<ul class="first">
+		<li class="item">first 1</li>
+		<li>first 1.1</li>
+		<ul class="first-1">
+			<li>first-1 1</li>
+			<li>first-1 2</li>
+			<ul class="first-1-1">
+				<li>first-1-1 1</li>
+				<li>first-1-1 2</li>		
+			</ul>
+		</ul>
+		<li class="item">first 2</li>
+		<li class="item">first 3</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景</title>
+	<style type="text/css">
+	div{
+		width:41px;
+		height:41px;
+	}
+	.background-origin{
+		padding: 20px;
+	    border: 20px dashed rgba(255,0,0,0.8);
+	    /* 如果背景没有被设置no-repeat那么background-origin会自动默认为border-box */
+	    background: green url(images/border.png) no-repeat;
+	    background-origin:padding-box;
+	    background-origin:border-box;
+	    background-origin:content-box;
+	}
+	.background-clip{
+		padding: 20px;
+	    border: 20px dashed rgba(255,0,0,0.8);
+	    background: green url(images/border.png);
+	    background-clip:border-box;
+	    background-clip:padding-box;
+		background-clip:content-box;
+	}
+	.background-size{
+		background:url(images/border.png) no-repeat;
+		background-size:41px;
+	}
+	.background-size-special{
+		width:350px;
+		height:125px;
+		border:1px solid black;
+		background:url(images/border.png) no-repeat;
+		background-size:contain;/* 缩放背景图片以完全装入背景区，可能背景区部分空白 */
+		background-size:cover;/* 缩放背景图片以完全覆盖背景区，可能背景图片部分看不见 */
+	}
+	.multiple-background{
+		/* 多重背景 */
+		background:url(images/border.png) no-repeat,url(images/all-screen-background-img.png) no-repeat;
+		background-size:41px;
+	}
+	</style>
+</head>
+<body>
+	<div class="background-origin"></div>
+	<div class="background-clip"></div>
+	<div class="background-size"></div>
+	<div class="multiple-background"></div>
+	<div class="background-size-special"></div>
+</body>
+</html>

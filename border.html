@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>边框</title>
+	<style type="text/css">
+		/**
+		 * 是否在firefox中所有涉及border的属性都必须要求border-style不为none才生效？
+		 */
+		div{
+			width:100px;
+			height:100px;
+		}
+		.border-color{
+			/* 在firefox中使用border-colors属性时，border-style不能为none */
+			border:10px solid transparent;
+			/* 目前只有firefox支持 */
+			-moz-border-top-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
+			-moz-border-right-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
+			-moz-border-left-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
+			-moz-border-bottom-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
+		}
+		.border-image-repeat{
+			border-width:10px;
+			/* 在firefox中使用border-image属性时，border-style不能为none */
+			border-style:solid;
+			-moz-border-image:url(images/border.png) 27 repeat; 
+    		-webkit-border-image:url(images/border.png) 27 repeat;
+		}
+		.border-image-round{
+			border-width:10px;
+			/* 在firefox中使用border-image属性时，border-style不能为none */
+			border-style:solid;
+			-moz-border-image:url(images/border.png) 27 round; 
+    		-webkit-border-image:url(images/border.png) 27 round;
+		}
+		.border-image-stretch{
+			border-width:10px;
+			/* 在firefox中使用border-image属性时，border-style不能为none */
+			border-style:solid;
+			-moz-border-image:url(images/border.png) 27 stretch; 
+    		-webkit-border-image:url(images/border.png) 27 stretch;
+		}
+		.border-radius{
+			/**
+			 * border-radius半径值与border-width值等于或小于0时，元素内角为直角；
+			 * 因为border-radius内边半径（内径）等于border-radius外边半径（外径）减去对应的边框宽度；
+			 * border-radius半径值与border-width值大于0时，元素内角具有圆角效果；
+			 * 其圆角半径为它们的差值，差值越大，圆角幅度越大，反之圆角幅度越小。
+			 */
+			border-radius:100px;
+			/* border-radius属性可以包含两个参数值，第一个是水平圆角半径值，第二个是垂直圆角半径值，两个参数使用反斜杠／分开 */
+			border-radius:10px / 20px;
+			/* border-radius运用到其它元素上时可能会有一些差别 */
+		}
+		/* border-radius还可以用来制作一些特殊的图形效果，如圆形、半圆形、扇形、椭圆形和不规则的圆角图形等 */
+		.border-radius-circle{
+			/* 元素宽度和高度相同 */
+			width:100px;
+			height:100px;
+			background-color:orange;
+			/* border-radius为宽高的一半 */
+			border-radius:50%;
+		}
+		.border-radius-semicircle{
+			/* 元素宽度是高度的两倍 */
+			width:100px;
+			height:50px;
+			background-color:orange;
+			/* border-radius为高度的值，调整位置即可实现不同方向的半圆效果 */
+			border-radius:50px 50px 0 0;
+		}
+		.border-radius-quartercircle{
+			/* 元素宽度和高度相同 */
+			width:100px;
+			height:100px;
+			background-color: orange;
+			/* border-radius为高度的值，调整位置即可实现不同方向的四分之一圆效果 */
+			border-radius:100px 0 0 0;
+		}
+		.border-radius-oval{
+			/* 调整宽度、高度、border-radius即可实现不同的椭圆 */
+			width:100px;
+			height:50px;
+			background-color: orange;
+			border-radius:100px / 50px;
+		}
+		.box-shadow{
+			/* 单边阴影 */
+			box-shadow:0 -4px 5px -4px orange;
+			/* 内单边阴影 */
+			box-shadow:inset 0 4px 5px -4px orange;
+			/* 多层阴影 */
+			box-shadow: -5px 0 5px red,0 5px 5px blue, 5px 0 5px green, 0 -5px 5px orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="border-color border-radius"></div>
+	<div class="border-image-repeat"></div>
+	<div class="border-image-round"></div>
+	<div class="border-image-stretch"></div>
+	<div class="border-radius-circle"></div>
+	<div class="border-radius-semicircle"></div>
+	<div class="border-radius-quartercircle"></div>
+	<div class="border-radius-oval"></div>
+	<div class="box-shadow"></div>
+</body>
+</html>

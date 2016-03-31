@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹性盒子布局</title>
+	<style type="text/css">
+		/**
+		 * 有一些属性会影响弹性盒子布局，比如：
+		 * 1、设置弹性子元素的line-height
+		 * 2、弹性盒子内子元素display!=block时在某些浏览器（特别是移动端浏览器）里边会出现宽度和高度不符合预期的情况
+		 * 3、弹性盒子布局应该加上不同浏览器的前缀，在不同浏览器中存在兼容性问题（特别是移动端浏览器）
+		 */
+		.container{
+			width:200px;
+			height:200px;
+			background-color:green;
+		}
+		.item{
+			width:50px;
+			height:50px;
+			margin:5px;
+			background-color:orange;
+		}
+		.item-special{
+			/* 决定弹性子元素顺序 */
+			order:-1;
+
+			/**
+			 * 决定弹性子元素分配剩余空间所占的比例，item-special的flex-grow为1其它弹性子元素的flex-grow默认为0，那么item-special所占剩余空间的比例为1/1，也就是100%
+			 */
+			flex-grow:1;
+
+			/* 决定弹性子元素的收缩能力，flex-shrink为3则表示空间不足时，收缩为其它弹性子元素大小的1/3 */
+			/*flex-shrink:3;*/
+
+			/* 决定弹性子元素需要伸缩时的基准值，有最小值限制 */
+			flex-basis:10px;
+			
+			/* 决定弹性子元素在交叉轴上的对齐方式，会覆写默认的对齐方式 */
+			align-self:flex-start;
+		}
+		.flexbox{
+			display:flex;
+			/* 主轴方向 */
+			flex-direction:row;
+			/* 内容换行方式 */
+			flex-wrap:wrap;
+			/* 主轴对齐方式 */
+			justify-content:center;
+			/* 交叉轴对齐方式 */
+			align-items:center;
+			/* 出现换行后在交叉轴上的对齐方式 */
+			align-content:center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container flexbox">
+		<span class="item">1</span>
+		<span class="item item-special">2</span>
+		<span class="item">3</span>
+		<span class="item">4</span>
+		<span class="item">5</span>
+		<span class="item">6</span>
+	</div>
+</body>
+</html>

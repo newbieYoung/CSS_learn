@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全屏背景(兼容IE8＋及大部分现代浏览器)</title>
+	<style type="text/css">
+		body{
+			overflow: hidden;
+		}
+		.all-screen-background-img{
+			position:absolute;
+			top:0;
+			bottom: 0;
+			left:0;
+			right:0;
+			/* start */
+			width:100%;
+			height:100%;
+			background: url(images/all-screen-background-img.png) no-repeat center center fixed;
+			-webkit-background-size:cover;
+			-moz-background-size:cover;
+			-o-background-size:cover;
+			background-size:cover;
+			filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/all-screen-background-img.png', sizingMethod='scale');
+			-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/all-screen-background-img.png', sizingMethod='scale')";
+			/* end */
+		}
+	</style>
+</head>
+<body>
+	<div class="all-screen-background-img"></div>
+</body>
+</html>
