@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Retina屏移动设备1px边框解决方案</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<style type="text/css">
+		div{
+			width:100px;
+			height:100px;
+			border:1px solid #000;
+			margin:10px;
+		}
+		.real-1px-border.hairlines {
+			position:relative;
+			/* 去掉边框 */
+			border:none;
+			/* 设置层级防止边框模拟层遮罩元素导致该元素上的事件无法被触发 */
+			z-index:2;
+		}
+		.real-1px-border.hairlines:after{
+			content: '';
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    /* 需要哪些边框设置哪些边框即可 */
+		    border-left: 1px solid red;
+		    border-right:1px solid blue;
+		    border-top:1px solid black;
+		    border-bottom:1px solid green;
+		    /* 可以实现边框圆角 */
+		    border-radius:10px;
+		    box-sizing: border-box;
+		    width: 200%;
+		    height: 200%;
+		    -webkit-transform: scale(0.5);
+		            transform: scale(0.5);
+		    -webkit-transform-origin: left top;
+		            transform-origin: left top;
+		    /* 设置层级防止边框模拟层遮罩元素导致该元素上的事件无法被触发 */
+		    z-index:1;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		normal 1px border
+	</div>
+	<div class="real-1px-border">
+		real 1px border
+	</div>
+	<p>主要原理（以两倍Retina屏而言）</p>
+	<p>首先通过js判断是否是在Retina屏中，如果是则设置一个左上角对齐的 border=1px 的二倍大小的元素然后缩小为0.5倍，此时边框也会被缩小为原来的0.5倍，由于在Retina屏中 border=1px 显示为2px，缩小为0.5倍之后就显示为1px了。</p>
+	<p>注意事项</p>
+	<ul>
+		<li>1、去掉原边框</li>
+		<li>2、如果元素为普通定位时需要设置为相对定位，如果元素为相对定位、绝对定位、固定定位等保持不变。</li>
+		<li>3、注意模拟边框元素和当前元素的层级关系，防止模拟边框元素遮罩当前元素后导致当前元素上的事件无法触发的情况</li>
+		<li>4、由于是缩小可能会出现当前元素周边有一小段间隙的情况（此时可能需要微调下档前元素的位置）</li>
+		<li>5、注意css属性的变化对其它元素的影响（某些情况下可能需要对其它元素进行微调）</li>
+	</ul>
+</body>
+<script type="text/javascript">
+	var target = document.querySelector('div.real-1px-border');
+	//判断是否是高分辨率的Retina屏
+	if(window.devicePixelRatio && devicePixelRatio >= 2){
+	    target.setAttribute('class','real-1px-border hairlines');
+	}
+
+	target.addEventListener('click',function(){
+		alert('事件依然能被触发');
+	});
+</script>
+</html>
