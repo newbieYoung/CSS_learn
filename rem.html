@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rem</title>
+	<style type="text/css">
+		body{
+			margin:0;
+			padding:0;
+		}
+		.demo0{
+			width:2rem;
+			height:1rem;
+			margin:0.1rem 0.2rem 0.3rem 0.4rem;
+			padding:0.4rem 0.3rem 0.2rem 0.1rem;
+			border:0.1rem solid #000;
+			font-size:0.1rem;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo0">demo0</div>
+	<script type="text/javascript">
+		/* 根据浏览器宽度的变化改变html标签的font-size属性 */
+		(function (doc, win) {
+		    var docEl = doc.documentElement,
+		            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		            recalc = function () {
+		                var clientWidth = docEl.clientWidth;
+		                if (!clientWidth) return;
+		                //以宽750px为例子，并扩大100倍，防止某些浏览器的最小字体限制
+		                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+		            };
+		    if (!doc.addEventListener) return;
+		    win.addEventListener(resizeEvt, recalc, false);
+		    doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</body>
+</html>
