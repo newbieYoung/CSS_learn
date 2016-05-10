@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文字</title>
+	<style type="text/css">
+		/**
+		 * word-wrap:break-word;允许长单词或URL地址换行到下一行
+		 * white-space:nowrap;强制不换行
+		 * text-overflow:ellipsis;超出部分隐藏且以省略号形式出现
+		 */
+		.text-wrap{
+			width:100px;
+			word-wrap:break-word;
+			border:1px solid #fff;
+		}
+		.text-hidden{
+			width:100px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow:ellipsis;
+		}
+	</style>
+</head>
+<body>
+	<div class="text-wrap">
+		<p>javascript javascript javascript javascript javascript javascript javascript javascript javascript</p>
+		<p>11117777777777777777777777111177777777777777777777771111777777777777777777777711117777777777777777</p>
+		<p>我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</p>
+	</div>
+	<div class="text-hidden">
+		<p>javascript javascript javascript javascript javascript javascript javascript javascript javascript</p>
+		<p>11117777777777777777777777111177777777777777777777771111777777777777777777777711117777777777777777</p>
+		<p>我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</p>
+	</div>
+</body>
+</html>
