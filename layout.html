@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>布局</title>
+	<style type="text/css">
+		.container{
+			width:100%;
+			height:200px;
+			margin-bottom:10px;
+			border:1px solid #000;
+			position:relative;
+		}
+		.v-center-h-center-1{
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-50%,-50%);
+
+			border:1px solid black;
+			height:100px;
+			width:100px;
+		}
+		.v-center-h-center-2{
+			margin: auto;  
+			position: absolute;  
+			top: 0; 
+			left: 0;
+			bottom: 0;
+			right: 0; 
+
+			border:1px solid black;
+			width:100px;
+			height:100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="v-center-h-center-1">垂直水平居中一</div>
+	</div>
+	<div class="container">
+		<div class="v-center-h-center-2">垂直水平居中二</div>
+	</div>
+</body>
+</html>
