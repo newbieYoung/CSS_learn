@@ -1,0 +1,22 @@
+{
+  "name": "css_learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/newbieYoung/CSS_learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/newbieYoung/CSS_learn/issues"
+  },
+  "homepage": "https://github.com/newbieYoung/CSS_learn#readme",
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}

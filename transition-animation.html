@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition动画优化</title>
+	<script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+	<style type="text/css">
+		html{
+			font-size:42px;
+		}
+		.roll-container{
+			background-color:#eee;
+			width:5.16rem;
+			height:3.24rem;
+			margin:0 auto;
+			position:relative;
+			overflow:hidden;
+			box-shadow: inset 0 15px 15px -5px #fff,inset 0 -15px 15px -5px #fff;
+		}
+		.roll-container .item{
+			position:absolute;
+			width:1.24rem;
+			height:107.12rem;
+			background:url(/images/list.png) repeat-y;
+			background-position:0 0;
+			background-size:100% auto;
+			box-shadow: inset 0 15px 15px -5px #fff,inset 0 -15px 15px -5px #fff;
+			-webkit-transform: translateZ(0);
+			transform: translateZ(0);
+			top:-21.42rem;
+		}
+		.roll-container .item.first{
+			left:0;
+		}
+		.roll-container .item.second{
+			left:1.32rem;
+		}
+		.roll-container .item.third{
+			left:2.64rem;
+		}
+		.roll-container .item.fouth{
+			left:3.96rem;
+		}
+        .tips{
+            font-size:0.3rem;
+            margin-top:2rem;
+        }
+	</style>
+</head>
+<body>
+    <ul class="tips">
+        <li>1、尽量减少动画元素的个数</li>
+        <li>2、避免频繁重排，以及大面积重绘（浏览器渲染机制相关，有些css属性会导致重排，有些css属性不会导致重排)</li>
+        <li>3、开启硬件加速（通过一些hack手段等）</li>
+        <li>4、尽量少使用box-shadows、gradients等高消耗属性</li>
+    </ul>
+	<div class="roll-container">
+		<div class="item first"></div>
+		<div class="item second"></div>
+		<div class="item third"></div>
+		<div class="item fouth"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	javascript:(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//rawgit.com/mrdoob/stats.js/master/build/stats.min.js';document.head.appendChild(script);})()
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+    	var $rollElement = $('div.roll-container div.item');
+		//滚动动画相关
+    	var rollAnimation = {
+            overNum:0,//组件滚动结束的数量
+    		cHeight:1071,//滚动一圈的y坐标需要移动的距离
+    		srTime:2,//速度提升期时间
+    		srNum:1.7,//速度提升期圈数
+    		wTime:6,//一次等待期的时间
+    		wNum:6,//一次等待期圈数
+    		iHeight:119,//每一项间隔距离
+    		sdTime:6//速度降低期时间
+    	}
+    	function startRoll(){//开始滚动动画
+    		rollInit();
+    		for(var i=0;i<$rollElement.length;i++){
+    			rollUp($rollElement.eq(i));
+    		}
+    	}
+    	/* 监听图片滚动结束 */
+    	$rollElement.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(e) {
+    		var $target = $(e.target);
+    		var step = $target.attr('step');
+	        if(step === 'up'){
+	            rollWaiting($target);
+	        }else if(step === 'wait'){
+	        	//0-money,1-lv2,2-none,3-bean,4-score4,5-score3,6-score2,7-ipad,8-iphone6p
+        		rollDown($target,2);
+            }else if(step === 'down'){
+                console.log('滚动动画运行结束');
+            }
+	    });
+    	function rollInit(){//滚动初始化
+            rollAnimation.overNum = 0;
+            $rollElement.attr('step','init');
+    		$rollElement.css({
+                '-webkit-transform': 'translateY(0) translateZ(0)',
+	            'transform':'translateY(0)',
+                '-webkit-transition':'none',
+                'transition':'none'
+	        });
+    	}
+    	function rollUp($target){//速度提升期
+    		$target.attr('step','up');
+    		var time = rollAnimation.srTime;
+    		var y = -rollAnimation.srNum*rollAnimation.cHeight;
+    		var index = $target.attr('index');
+            setTimeout(function(){
+                roll($target,time,y*1.0/100,'ease-in');
+            },400*index);
+    		
+    	}
+    	function rollWaiting($target){//等待抽奖结果期
+    		$target.attr('step','wait');
+    		var y = -rollAnimation.srNum*rollAnimation.cHeight;
+			y = y-rollAnimation.wNum*rollAnimation.cHeight;
+    		var time = rollAnimation.wTime;
+    		roll($target,time,y*1.0/100,'linear');
+    	}
+    	function rollDown($target,num){//获得抽奖结果速度降低期
+    		$target.attr('step','down');
+    		var index = $target.attr('index');
+    		var y = -num*rollAnimation.iHeight;
+    		var time = rollAnimation.sdTime;
+    		roll($target,time,y*1.0/100,'ease-out');
+    	}
+    	function roll(target,time,y,type){
+            // 调试
+            // if(target.attr('index')==0){
+            //     console.log(time+' '+y+' '+type);
+            // }
+            target.css({
+                '-webkit-transform': 'translateY('+y+'rem) translateZ(0)',
+                'transform': 'translateY('+y+'rem) translateZ(0)',
+	            '-webkit-transition':'-webkit-transform '+time+'s '+type,
+	            'transition':'transform '+time+'s '+type
+	        });
+    	}
+
+    	startRoll();
+	});
+</script>
+</html>
