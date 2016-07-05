@@ -21,6 +21,16 @@
 			overflow: hidden;
 			text-overflow:ellipsis;
 		}
+		.table-text-hidden{
+			width:200px;
+			table-layout:fixed;/* 表格为固定布局时表格的宽高将完全由表格本身觉得，否则表格内容可能会影响整个表格的宽高 */
+		}
+		.table-text-hidden td{
+			width:25%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow:ellipsis;
+		}
 	</style>
 </head>
 <body>
@@ -34,5 +44,27 @@
 		<p>11117777777777777777777777111177777777777777777777771111777777777777777777777711117777777777777777</p>
 		<p>我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</p>
 	</div>
+	<table class="table-text-hidden">
+		<tbody>
+			<tr>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+			</tr>
+			<tr>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+			</tr>
+			<tr>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+				<td>我们去吃饭吧</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
