@@ -5,10 +5,10 @@
 	<title>模糊效果</title>
 	<style type="text/css">
 		.filter-blur{
-			-webkit-filter: blur(3px);
+			-webkit-filter: blur(3px);/* chrome */
 			        filter: blur(3px);
-			        filter: url(#blur);
-   			filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='3');
+			        filter: url(#blur);/* firefox */
+   			filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='3');/* IE6~9 */
 		}
 		img{
 			width:200px;

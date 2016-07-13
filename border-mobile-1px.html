@@ -62,16 +62,16 @@
 		<li>4、由于是缩小可能会出现当前元素周边有一小段间隙的情况（此时可能需要微调下当前元素的位置）</li>
 		<li>5、注意css属性的变化对其它元素的影响（某些情况下可能需要对其它元素进行微调）</li>
 	</ul>
-</body>
-<script type="text/javascript">
-	var target = document.querySelector('div.real-1px-border');
-	//判断是否是高分辨率的Retina屏
-	if(window.devicePixelRatio && devicePixelRatio >= 2){
-	    target.setAttribute('class','real-1px-border hairlines');
-	}
+	<script type="text/javascript">
+		var target = document.querySelector('div.real-1px-border');
+		//判断是否是高分辨率的Retina屏
+		if(window.devicePixelRatio && devicePixelRatio >= 2){
+		    target.setAttribute('class','real-1px-border hairlines');
+		}
 
-	target.addEventListener('click',function(){
-		alert('事件依然能被触发');
-	});
-</script>
+		target.addEventListener('click',function(){
+			alert('事件依然能被触发');
+		});
+	</script>
+</body>
 </html>
