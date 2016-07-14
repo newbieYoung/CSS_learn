@@ -5,14 +5,18 @@
 	<title>模糊效果</title>
 	<style type="text/css">
 		.filter-blur{
+			width:200px;
+
 			-webkit-filter: blur(3px);/* chrome */
 			        filter: blur(3px);
 			        filter: url(#blur);/* firefox */
    			filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='3');/* IE6~9 */
 		}
-		img{
-			width:200px;
-			height:200px;
+		#list-canvas{
+			width:50px;
+		}
+		#list-img{
+			width:50px;
 		}
 	</style>
 </head>
@@ -24,5 +28,24 @@
 	        </filter>
 	    </defs>
 	</svg>
-	<img src="./images/indistinct.jpg" class="filter-blur">
+	<img class="filter-blur" src="./images/indistinct.jpg">
+
+	<img id="list-img" src="./images/list.png">
+	<canvas id="list-canvas" width="124" height="1071"></canvas>
+	
+	<script src="./node_modules/jquery/dist/jquery.js"></script>
+	<script src="./node_modules/stackblur-canvas/dist/stackblur.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var $list = $('#list-canvas');
+			var context = $list[0].getContext('2d');
+			var listImg = new Image();
+			listImg.src = './images/list.png';
+			listImg.onload = function(){
+				context.drawImage(listImg,0,0,124,1071,0,0,124,1071);
+				StackBlur.canvasRGBA($list[0],0,0,124,1071,10);//模糊效果不理想
+				//StackBlur.image('list-img','list-canvas',10,true);
+			};
+		});
+	</script>
 </html>

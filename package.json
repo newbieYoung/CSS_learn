@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/newbieYoung/CSS_learn#readme",
   "dependencies": {
-    "jquery": "^2.2.3"
+    "jquery": "^2.2.3",
+    "stackblur-canvas": "^1.2.1"
   }
 }
