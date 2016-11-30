@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用边框构造各种几何形状</title>
+	<style type="text/css">
+		/**
+		 * 原理就在于边框区域的划分方式
+		 */
+		.origin{
+			width:50px;
+			height:50px;
+			border-left: 50px solid green; 
+			border-right: 50px solid red; 
+			border-bottom: 50px solid blue; 
+			border-top: 50px solid pink; 
+		}
+		/* 上三角 */
+		.angle-up{
+			width: 0; 
+			height: 0; 
+			border-left: 50px solid transparent; 
+			border-right: 50px solid transparent; 
+			border-bottom: 100px solid red; 
+		}
+	</style>
+</head>
+<body>
+	<div class="origin"></div>	
+	<div class="angle-up"></div>
+</body>
+</html>
