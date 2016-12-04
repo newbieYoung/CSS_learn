@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>使用边框构造各种几何形状</title>
+	<title>CSS构造各种几何形状</title>
 	<style type="text/css">
+		body{
+			margin:50px;
+		}
+		div{
+			margin:10px;
+		}
 		/**
-		 * 原理就在于边框区域的划分方式
+		 * 边框区域划分
 		 */
 		.origin{
 			width:50px;
@@ -23,10 +29,28 @@
 			border-right: 50px solid transparent; 
 			border-bottom: 100px solid red; 
 		}
+		/* 平行四边形 */
+		.parallelogram{
+			width:100px;
+			height:100px;
+			background:blue;
+			transform: skew(20deg);
+		}
+		/* 梯形 */
+		.trapezoid{
+			width:0;
+			height:0;
+			width:50px;
+			border-left: 50px solid transparent; 
+			border-right: 50px solid transparent; 
+			border-bottom: 100px solid pink; 
+		}
 	</style>
 </head>
 <body>
 	<div class="origin"></div>	
 	<div class="angle-up"></div>
+	<div class="parallelogram"></div>
+	<div class="trapezoid"></div>
 </body>
 </html>
