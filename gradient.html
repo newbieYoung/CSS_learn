@@ -27,11 +27,15 @@
 		}
 		.demo5{
 			/* 线性重复渐变，0至5从红色渐变为红色，5至10从白色渐变为白色，依次重复，从而形成红包相间的斑马纹 */
-			background: repeating-linear-gradient(0deg, red 0, red 5px, white 5px, white 10px);
+			background-image: repeating-linear-gradient(0deg, red 0, red 5px, white 5px, white 10px);
 		}
 		.demo6{
 			/* 线性重复渐变，0至10从红色渐变为黄色色，10至20从蓝色渐变为白色，依次重复*/
-			background: repeating-linear-gradient(0deg, red 0, yellow 10px, blue 10px, white 20px); 
+			background-image: repeating-linear-gradient(0deg, red 0, yellow 10px, blue 10px, white 20px); 
+		}
+		.demo7{
+			/* 径向重复渐变 */ 
+			background-image: repeating-radial-gradient(red, yellow 2%, green 4%,blue 6%);
 		}
 	</style>
 </head>
@@ -42,5 +46,6 @@
 	<div class="demo4"></div>
 	<div class="demo5"></div>
 	<div class="demo6"></div>
+	<div class="demo7"></div>
 </body>
 </html>
