@@ -10,19 +10,19 @@
 			margin:10px;
 		}
 		.demo1{
-			/* 到最远角（farthest-corner）按椭圆（ellipse）参照各颜色的比例渐变 */
+			/* 径向渐变，到最远角（farthest-corner）按椭圆（ellipse）参照各颜色的比例渐变 */
 		 	background-image: radial-gradient(ellipse closest-side, red, yellow 10%, pink 50%, black);
 		}
 		.demo2{
-			/* 从元素的右下角 按圆形（circle）参照各颜色的比例渐变 */
+			/* 径向渐变，从元素的右下角 按圆形（circle）参照各颜色的比例渐变 */
 			background-image: radial-gradient( circle at 100% 100%, red, yellow 10%, pink 50%, black);
 		}
 		.demo3{
-			/* 渐变支持透明度 */
+			/* 线性渐变，渐变支持透明度 */
 			background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), url(./images/flower.jpg);
 		}
 		.demo4{
-			/* 从头部到底部渐变，按蓝色、黄色、白色、橘色渐变，其中黄色的中心在40% 白色的中心位置在80% */
+			/* 线性渐变，从头部到底部渐变，按蓝色、黄色、白色、橘色渐变，其中黄色的中心在40% 白色的中心位置在80% */
 			background-image: linear-gradient(to bottom, blue,yellow 40%, white 80%, orange);
 		}
 		.demo5{
@@ -37,6 +37,14 @@
 			/* 径向重复渐变 */ 
 			background-image: repeating-radial-gradient(red, yellow 2%, green 4%,blue 6%);
 		}
+		.demo8{
+			/* 径向渐变，0至5px从白色渐变为白色，那么中心即为半径为5的白色实心圆，同时从5px开始为 蓝色，结束颜色没有则一直都是蓝色 */
+		    background-image: radial-gradient(white 0,white 5px, blue 5px);
+		    background-size: 15px 15px;
+		    background-position: 8px 3px;
+		    /* 默认背景重复 */
+		    /* background-repeat: no-repeat; */
+		}
 	</style>
 </head>
 <body>
@@ -47,5 +55,6 @@
 	<div class="demo5"></div>
 	<div class="demo6"></div>
 	<div class="demo7"></div>
+	<div class="demo8"></div>
 </body>
 </html>
