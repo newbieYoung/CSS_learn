@@ -12,21 +12,89 @@
 			position:relative;
 			width:100%;
 			height:100%;
-			background-image: -webkit-radial-gradient(hsla(120,70%,60%,.9),hsla(360,60%,60%,.9));
-  			background-image: radial-gradient(hsla(120,70%,60%,.9),hsla(360,60%,60%,.9));
+			background-image: -webkit-radial-gradient(rgba(86,194,255,1), rgba(86,194,255,0));
+  			background-image: radial-gradient(rgba(86,194,255,1), rgba(86,194,255,0));
+			overflow: hidden;
 		}
 		.point-light .item-angle{
 			position:absolute;
 			top:0;
-			left:230px;
-			right:230px;
+			left:210px;
+			right:210px;
 			width:0;
 			height:0;
-			border-top:400px solid red;
-			border-left:20px solid transparent;
-			border-right:20px solid transparent;
+			border-top:400px solid #33c0ff;
+			border-left:40px solid transparent;
+			border-right:40px solid transparent;
+			transform-origin:50% 100%;
+		}
+		.point-light .item-angle.left1{
+			transform: rotate(20deg);
+			--webkit-transform: rotate(20deg);
+		}
+		.point-light .item-angle.left2{
+			transform: rotate(40deg);
+			--webkit-transform: rotate(20deg);
+		}
+		.point-light .item-angle.left3{
+			transform: rotate(60deg);
+			--webkit-transform: rotate(30deg);
+		}
+		.point-light .item-angle.left4{
+			transform: rotate(80deg);
+			--webkit-transform: rotate(40deg);
+		}
+		.point-light .item-angle.left5{
+			transform: rotate(100deg);
+			--webkit-transform: rotate(100deg);
+		}
+		.point-light .item-angle.left6{
+			transform: rotate(120deg);
+			--webkit-transform: rotate(120deg);
+		}
+		.point-light .item-angle.left7{
+			transform: rotate(140deg);
+			--webkit-transform: rotate(140deg);
+		}
+		.point-light .item-angle.left8{
+			transform: rotate(160deg);
+			--webkit-transform: rotate(160deg);
 		}
 		.point-light .item-angle.reverse{
+			transform: rotate(180deg);
+			--webkit-transform: rotate(180deg);
+		}
+		.point-light .item-angle.right1{
+			transform: rotate(-20deg);
+			--webkit-transform: rotate(-20deg);
+		}
+		.point-light .item-angle.right2{
+			transform: rotate(-40deg);
+			--webkit-transform: rotate(-20deg);
+		}
+		.point-light .item-angle.right3{
+			transform: rotate(-60deg);
+			--webkit-transform: rotate(-30deg);
+		}
+		.point-light .item-angle.right4{
+			transform: rotate(-80deg);
+			--webkit-transform: rotate(-40deg);
+		}
+		.point-light .item-angle.right5{
+			transform: rotate(-100deg);
+			--webkit-transform: rotate(-100deg);
+		}
+		.point-light .item-angle.right6{
+			transform: rotate(-120deg);
+			--webkit-transform: rotate(-120deg);
+		}
+		.point-light .item-angle.right7{
+			transform: rotate(-140deg);
+			--webkit-transform: rotate(-140deg);
+		}
+		.point-light .item-angle.right8{
+			transform: rotate(-160deg);
+			--webkit-transform: rotate(-160deg);
 		}
 	</style>
 </head>
@@ -34,7 +102,23 @@
 	<div class="container">
 		<div class="point-light">
 			<div class="item-angle"></div>
+			<div class="item-angle left1"></div>
+			<div class="item-angle left2"></div>
+			<div class="item-angle left3"></div>
+			<div class="item-angle left4"></div>
+			<div class="item-angle left5"></div>
+			<div class="item-angle left6"></div>
+			<div class="item-angle left7"></div>
+			<div class="item-angle left8"></div>
 			<div class="item-angle reverse"></div>
+			<div class="item-angle right1"></div>
+			<div class="item-angle right2"></div>
+			<div class="item-angle right3"></div>
+			<div class="item-angle right4"></div>
+			<div class="item-angle right5"></div>
+			<div class="item-angle right6"></div>
+			<div class="item-angle right7"></div>
+			<div class="item-angle right8"></div>
 		</div>
 	</div>
 </body>
