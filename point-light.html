@@ -8,13 +8,18 @@
 			width:500px;
 			height:800px;
 		}
-		.point-light{
-			position:relative;
+		.point-light-bak{
 			width:100%;
 			height:100%;
 			background-image: -webkit-radial-gradient(rgba(86,194,255,1), rgba(86,194,255,0));
   			background-image: radial-gradient(rgba(86,194,255,1), rgba(86,194,255,0));
+		}
+		.point-light{
+			position:relative;
+			width:100%;
+			height:100%;
 			overflow: hidden;
+			background-color:#30b8ff;
 		}
 		.point-light .item-angle{
 			position:absolute;
@@ -23,7 +28,7 @@
 			right:210px;
 			width:0;
 			height:0;
-			border-top:400px solid #33c0ff;
+			border-top:400px solid #30b8ff;
 			border-left:40px solid transparent;
 			border-right:40px solid transparent;
 			transform-origin:50% 100%;
@@ -101,6 +106,7 @@
 <body>
 	<div class="container">
 		<div class="point-light">
+			<div class="point-light-bak"></div>
 			<div class="item-angle"></div>
 			<div class="item-angle left1"></div>
 			<div class="item-angle left2"></div>
