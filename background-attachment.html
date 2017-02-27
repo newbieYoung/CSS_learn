@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视差滚动原理一：利用background-attachment: fixed</title>
+	<style>
+		.section{
+			width:960px;
+			height:800px;
+			margin:0 auto;
+			background-attachment:fixed;
+		}
+		.section p{
+			height:100%;
+			width:100%;
+			line-height:800px;
+			text-align: center;
+			font-size:20px;
+		}
+		.section01{
+			background-image:url(./images/section01.jpg);
+		}
+		.section01 p{
+			color:#fff;
+		}
+		.section02{
+			background-image:url(./images/section02.jpg);
+		}
+		.section02 p{
+			color:#FF8500;
+		}
+		.section03{
+			background-image:url(./images/section03.jpg);
+		}
+		.section03 p{
+			color:#747474;
+		}
+	</style>
+</head>
+<body>
+	<div class="section section01">
+		<p>视差滚动原理一：利用background-attachment: fixed || scroll || local</p>
+	</div>
+	<div class="section section02">
+		<p>background-attachment默认值是scroll，意味着背景跟随着内容的移动而移动</p>
+	</div>
+	<div class="section section03">
+		<p>而我们设置background-attachment:fixed后，背景相对页面固定而不再跟随内容滚动，从而实现视差滚动。</p>
+	</div>
+</body>
+</html>
