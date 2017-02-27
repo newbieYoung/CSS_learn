@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3 perspective</title>
+	<style>
+		.stage{
+			width:900px;
+			height:100px;
+			margin:0 auto;
+			font-size:0;
+			perspective:200px;
+		}
+		.rect{
+			width:100px;
+			height:100px;
+			background-color: green;
+			display: inline-block;
+			transform:rotateY(45deg);
+		}
+		.explain-img{
+			width:100%;
+			margin-top:100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="stage">
+		<div class="rect"></div>
+		<div class="rect"></div>
+		<div class="rect"></div>
+		<div class="rect"></div>
+		<div class="rect"></div>
+		<div class="rect"></div>
+		<div class="rect"></div>
+		<div class="rect"></div>
+		<div class="rect"></div>
+	</div>
+	<img src="./images/perspective.jpg" class="explain-img">
+</body>
+</html>
