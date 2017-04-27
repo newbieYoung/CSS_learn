@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>利用CSS比较图片的差异</title>
+    <style>
+        div{
+            width:375px;
+            height:603px;
+            position: relative;
+        }
+        div img{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            width:100%;
+            height:100%;
+        }
+        .screenorigin{
+            z-index:0;
+        }
+        .screenshot{
+            z-index:10;
+            /*mix-blend-mode: difference;*/
+            -webkit-filter: invert(100%) opacity(50%);
+            filter: invert(100%) opacity(50%);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img class="screenorigin" src="./images/screenorigin.jpg" alt="">
+        <img class="screenshot" src="./images/screenshot.jpg" alt="">
+    </div>
+</body>
+</html>
