@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <title>ul实现横向滚动列表</title>
+    <style>
+        .container{
+            width:400px;
+            height:80px;
+            border:1px solid #000000;
+            overflow:scroll;
+        }
+        /* 让列表宽度大于容器宽度，然后容器设置为overflow:scroll即可；如果列表元素个数以及单个宽度不定，则需要动态计算 */
+        .container ul{
+            height:80px;
+            width:720px;
+            padding:0;
+            margin:0;
+            font-size:0;
+        }
+        .container ul li{
+            width:50px;
+            height:100%;
+            margin-left:5px;
+            margin-right:5px;
+            background-color:pink;
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>
