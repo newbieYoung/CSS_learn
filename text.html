@@ -31,6 +31,32 @@
 			overflow: hidden;
 			text-overflow:ellipsis;
 		}
+		/* webkit内核浏览器限制文字行数 */
+		.max-line-two-webkit{
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow:hidden;
+
+			width:200px;
+		}
+		/* 其它浏览器限制文字行数 */
+		.max-line-two-others{
+			position: relative;
+			display:inline-block;
+			width:200px;
+			height:40px;
+			line-height:20px;
+			overflow:hidden;
+		}
+		.max-line-two-others:after {
+			content:"...";
+			position:absolute;
+			bottom:0;
+			right:0;
+			padding: 0 5px;
+			background-color: #fff;
+		}
 	</style>
 </head>
 <body>
@@ -66,5 +92,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<div class="max-line-two-webkit">我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</div>
+	<div class="max-line-two-others">我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</div>
 </body>
 </html>
