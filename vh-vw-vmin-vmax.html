@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>视窗单位vh、vw、vmin、vmax</title>
+    <style>
+        /* 没有在实际生成环境中用过，所以暂时不知道有啥坑没有，听说移动端已经基本可用 */
+        .div1{
+            position: absolute;
+            left:1vw;
+            top:1vh;
+            width:10vw;
+            height:12vh;
+            font-size:10vw;
+            line-height:10vh;
+            background-color:pink;
+        }
+        .div2{
+            position: absolute;
+            bottom:1vmax;
+            right:1vmin;
+            width:10vmin;
+            font-size:10vh;
+            line-height:10vmax;
+            height:10vmax;
+            background-color:gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">hello</div>
+    <div class="div2">world</div>
+</body>
+</html>
