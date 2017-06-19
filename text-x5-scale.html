@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:50px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>QQ、微信内置X5浏览器调整字体功能相关</title>
+    <style>
+        /**
+         * QQ、微信内置X5浏览器调整字体功能实际是应用行为，并不是我想象改变前端属性然后浏览器重绘；
+         * 另外貌似调整字体功能貌似只会影响font-size、line-height因此如果某个文字容器设置了高度；
+         * 那么使用了调整字体功能之后会导致容器中的文字位置看起来有变化，比如以前是垂直居中的，调整之后可能就不垂直居中了。
+         */
+        .text{
+            width:100%;
+            display:inline-block;
+            background-color:gray;
+        }
+        .text1{
+            /*height:50px;*/
+            font-size:20px;
+            line-height: 50px;
+        }
+        .text2{
+            /*height:50px;*/
+            font-size:20px;
+            line-height: 250%;
+        }
+        .text3{
+            /*height:1rem;*/
+            font-size:.4rem;
+            line-height: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="text text1">文字</div>
+    <div class="text text2">文字</div>
+    <div class="text text3">文字</div>
+</body>
+</html>
