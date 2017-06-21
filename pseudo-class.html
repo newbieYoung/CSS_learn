@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪类</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+    <style>
+        .link1{
+            display: inline-block;
+            width:200px;
+            height:40px;
+            line-height: 40px;
+            border:1px solid #000;
+            text-align: center;
+            background-color:green;
+            color:#fff;
+        }
+
+        .link1:link{
+            /* 链接未被访问时也就是初始状态 */
+            background-color:red;
+        }
+        .link1:hover{
+            /* 链接获得焦点时 */
+            background-color:yellow;
+        }
+        .link1:active{
+            /* 链接被点击时 */
+            background-color:pink;
+        }
+        .link1:visited{
+            /* 链接被访问后，是否被访问是由浏览器控制的 */
+            background-color:gray;
+        }
+    </style>
+</head>
+<body>
+    <a class="link1" href="#">link1</a>
+    <a class="link1" href="#">link1</a>
+</body>
+</html>
