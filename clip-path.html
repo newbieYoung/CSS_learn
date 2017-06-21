@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clip-path路径裁剪遮罩</title>
+    <style>
+        .demo1{
+            width:200px;
+            height:200px;
+            /*background:url(./images/indistinct.jpg) no-repeat;*/
+            /*background-size: cover;*/
+
+            background-color:pink;
+
+            /* 矩形 */
+            /*clip-path: inset(40px 10px 50px 50px);*/
+
+            /* 多边形 */
+            /*clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);*/
+
+            /* 圆 */
+            /*clip-path: circle(30px at 35px 35px);*/
+
+            /* 椭圆 */
+            /*clip-path: ellipse(65px 30px at 125px 40px);*/
+        }
+
+        /* clip-path支持transtion和animation，但是存在一定的局限性，就是过渡的两个状态，坐标顶点的数量必须一致，可以采取重合坐标点的方式来解决 */
+        .demo2 {
+            width: 200px;
+            height: 200px;
+            background-color: crimson;
+            transition: .3s;
+            clip-path: polygon(
+                    50% 0%,
+                    0% 100%,
+                    100% 100%,
+                    100% 100%,
+                    100% 100%,
+                    100% 100%,
+                    100% 100%,
+                    100% 100%,
+                    100% 100%
+            );
+            animation: demo2-animate 5s linear infinite;
+        }
+        @keyframes demo2-animate {
+            10% {
+                background-color: darkorange;
+                clip-path: polygon(
+                        50% 0%,
+                        100% 50%,
+                        50% 100%,
+                        0% 50%,
+                        0% 50%,
+                        0% 50%,
+                        0% 50%,
+                        0% 50%,
+                        0% 50%
+                );
+            }
+            100% {
+                background-color: crimson;
+                clip-path: polygon(
+                        50% 0%,
+                        0% 100%,
+                        30% 100%,
+                        60% 100%,
+                        90% 100%,
+                        10% 100%,
+                        20% 100%,
+                        80% 100%,
+                        40% 100%
+                );
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="demo1"></div>
+    <div class="demo2"></div>
+</body>
+</html>
