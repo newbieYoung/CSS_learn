@@ -8,15 +8,54 @@
             width:400px;
             height:400px;
         }
-        .demo1 img{
+        .demo1 .wrap{
             width:200px;
             height:200px;
+            border-radius:50%;
             shape-outside: circle(100px at 100px 100px);
             float:left;
+            overflow:hidden;
+        }
+        .demo1 .wrap img{
+            width:100%;
+            height:100%;
+        }
+
+        .demo2{
+            width:400px;
+            height:400px;
+        }
+        .demo2 .wrap-before {
+            shape-outside: polygon(0 0,0 100%,100% 100%,0 50%,100% 0);
+            float: left;
+            width: 50%;
+            height: 100%;
+        }
+        .demo2 .wrap-after {
+            shape-outside: polygon(100% 0,100% 100%,0% 100%,100% 50%,0% 0);
+            float: right;
+            width: 50%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="demo1"><img src="./images/indistinct.jpg" alt="">shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径</div>
+    <svg>
+        <defs>
+            <clipPath id="clipPath1">
+                <path fill="#FFFFFF" stroke="#000000" stroke-width="1.5794" stroke-miterlimit="10" d="M215,100.3c97.8-32.6,90.5-71.9,336-77.6
+                c92.4-2.1,98.1,81.6,121.8,116.4c101.7,149.9,53.5,155.9,14.7,178c-96.4,54.9,5.4,269-257,115.1c-57-33.5-203,46.3-263.7,20.1
+                c-33.5-14.5-132.5-45.5-95-111.1C125.9,246.6,98.6,139.1,215,100.3z"></path>
+            </clipPath>
+        </defs>
+    </svg>
+    <div class="demo1"><div class="wrap"><img src="./images/indistinct.jpg" alt=""></div>shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径shape-outside内容环绕环绕路径</div>
+
+    <div class="demo2">
+        <div class="wrap-before"></div>
+        <div class="wrap-after"></div>
+        <h1>hello cssshapes</h1>
+        <p>The shape-outside CSS property uses shape values to define the float area for a float and will cause inline content to wrap around the shape instead of the float's bounding box.</p>
+    </div>
 </body>
 </html>
