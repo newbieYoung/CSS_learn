@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百分比数值</title>
+    <style>
+        .static-parent{
+            width:500px;
+            height:400px;
+            background-color:green;
+        }
+        .static-element{
+            display:inline-block;
+            padding:5%;
+            margin:5%;
+            width:25%;
+            height:25%;
+            font-size:20px;
+            line-height:200%;/* 4px */
+            background-color:red;
+        }
+
+        .relative-element{
+            padding:5%;
+            margin:5%;
+            top:25%;
+            left:25%;
+            width:25%;
+            height:25%;
+            font-size:20px;
+            line-height:200%;/* 4px */
+            position:relative;
+            background-color:red;
+        }
+
+        .absolute-element{
+            /**
+			 * 元素定位为绝对定位时，百分比数值是相对于第一个定位父元素而言的（除了line－height），
+			 * 而且只有部分属性有效，包括：padding、margin、top、left、width、height；
+			 *
+			 * padding百分比是相对于定位父元素的宽度而言；
+			 * margin百分比是相对于定位父元素的宽度而言；
+			 * width百分比是相对于定位父元素的宽度而言；
+			 * left、right百分比是相对于定位父元素的宽度而言；
+			 *
+			 * top、bottom百分比是相对于定位父元素的高度而言；
+			 * height百分比是相对于定位父元素的高度而言；
+			 *
+			 * line-height百分比是相当于字体固定时每行默认高度而言；
+			 */
+            padding:5%;
+            margin:5%;
+            top:25%;
+            left:25%;
+            width:25%;
+            height:25%;
+            font-size:20px;
+            line-height:200%;
+            position:absolute;
+            background-color:red;
+
+            /*transform:translateY(275px);*/
+            transform:translateY(183%);/* 相对于自身高度而言 */
+        }
+    </style>
+</head>
+<body>
+    <div class="static-parent">
+        <div class="static-element">static</div>
+    </div>
+    <div class="static-element">static</div>
+    <div class="relative-element">relative</div>
+    <div class="absolute-element">absolute</div>
+</body>
+</html>
