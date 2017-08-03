@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入框</title>
+    <style>
+        input{
+            width:200px;
+            height:50px;
+        }
+        /* 获得焦点时去掉默认高亮边框 */
+        .none-outline{
+            outline: none;
+        }
+
+        /* 设置placeholder相关样式 */
+        ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+            color:#C9D1DA;
+        }
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color:#C9D1DA;
+        }
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color:#C9D1DA;
+        }
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color:#C9D1DA;
+        }
+        ::-ms-input-placeholder { /* Microsoft Edge */
+            color:#C9D1DA;
+        }
+
+    </style>
+</head>
+<body>
+    <input class="none-outline" type="text" placeholder="placeholder">
+</body>
+</html>
