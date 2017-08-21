@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+    <style>
+        .demo{
+            display:block;
+            margin:20px;
+        }
+        .demo1{
+            filter:blur(5px);/* 高斯模糊 */
+        }
+        /* 即可作用于图片也可作用于背景图 */
+        .demo2{
+            width:300px;
+            height:100px;
+            margin:20px;
+            background-image:url(./images/flower.jpg);
+            background-size:100% 100%;
+            filter:brightness(.5);/* 亮度 */
+        }
+        .demo3{
+            filter:contrast(.5);/* 对比度 */
+        }
+        .demo4{
+            filter:drop-shadow(10px 10px 10px black);/* 阴影，类似box-shadow，区别在于一些浏览器会为drop-shadow提供硬件加速为了更好的性能 */
+        }
+        .demo5{
+            filter:grayscale(1);/* 灰度 */
+        }
+        .demo6{
+            filter:hue-rotate(90deg);/* 色相旋转 */
+        }
+        .demo7{
+            filter:invert(1);/* 反转 */
+        }
+        .demo8{
+            filter: opacity(50%);/* 透明 */
+        }
+        .demo9{
+            filter: saturate(500%);/* 饱和度 */
+        }
+        .demo10{
+            filter: sepia(1);/* 深褐色化 */
+        }
+        .demo11{
+            filter:contrast(.5) brightness(.5);/* 任意组合 */
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/flower.jpg" alt="" class="demo">
+    <img src="./images/flower.jpg" alt="" class="demo demo1">
+    <div class="demo2"></div>
+    <img src="./images/flower.jpg" alt="" class="demo demo3">
+    <img src="./images/flower.jpg" alt="" class="demo demo4">
+    <img src="./images/flower.jpg" alt="" class="demo demo5">
+    <img src="./images/flower.jpg" alt="" class="demo demo6">
+    <img src="./images/flower.jpg" alt="" class="demo demo7">
+    <img src="./images/flower.jpg" alt="" class="demo demo8">
+    <img src="./images/flower.jpg" alt="" class="demo demo9">
+    <img src="./images/flower.jpg" alt="" class="demo demo10">
+    <img src="./images/flower.jpg" alt="" class="demo demo11">
+</body>
+</html>
