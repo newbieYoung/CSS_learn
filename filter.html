@@ -47,9 +47,19 @@
         .demo11{
             filter:contrast(.5) brightness(.5);/* 任意组合 */
         }
+        .demo12{
+            filter: url(#blur);/* svg */
+        }
     </style>
 </head>
 <body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="0" width="0">
+        <defs>
+            <filter id="blur" x="0" y="0">
+                <feGaussianBlur stdDeviation="3" />
+            </filter>
+        </defs>
+    </svg>
     <img src="./images/flower.jpg" alt="" class="demo">
     <img src="./images/flower.jpg" alt="" class="demo demo1">
     <div class="demo2"></div>
@@ -62,5 +72,6 @@
     <img src="./images/flower.jpg" alt="" class="demo demo9">
     <img src="./images/flower.jpg" alt="" class="demo demo10">
     <img src="./images/flower.jpg" alt="" class="demo demo11">
+    <img src="./images/flower.jpg" alt="" class="demo demo12">
 </body>
 </html>
