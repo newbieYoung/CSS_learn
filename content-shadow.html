@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容相关阴影</title>
+    <style>
+        .demo0{
+            width:172px;
+            height:237px;
+            background-image:url(./images/girl.png);
+            background-size:100% 100%;
+            position: relative;
+        }
+        .demo0 .content-shadow{
+            width:172px;
+            height:237px;
+            background-image:url(./images/girl.png);
+            background-size:100% 100%;
+            position: absolute;
+            transform: scaleX(.8795) scaleY(.9375);
+            transform-origin: 50% 100%;
+            bottom:-4px;
+            filter:blur(10px);
+            z-index:-1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo0">
+        <div class="content-shadow"></div>
+    </div>
+</body>
+</html>
