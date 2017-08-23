@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变阴影、与内容相关阴影</title>
+    <style>
+        .demo0{
+            width:440px;
+            height:80px;
+            background-image: linear-gradient(-90deg, #FA3883 9%, #FFB647 85%);
+            border-radius: 100px;
+            position: relative;
+        }
+        .demo0 .gradient-shadow{
+            width:440px;
+            height:80px;
+            background-image: linear-gradient(-90deg, #FA3883 9%, #FFB647 85%);
+            border-radius: 100px;
+            transform: scaleX(.8795) scaleY(.9375);
+            transform-origin: 50% 100%;
+            position: absolute;
+            bottom:-4px;
+            filter:blur(10px) grayscale(.5);
+            z-index:-1;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo0">
+        <div class="gradient-shadow"></div>
+    </div>
+</body>
+</html>
