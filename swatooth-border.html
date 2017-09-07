@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>锯齿边框</title>
+    <style>
+        .demo0{
+            width:300px;
+            height:100px;
+            background-color:pink;
+            /**
+             * linear,//表示渐变的为直线 另外一个值是radial
+             * 50% 0,//直线型渐变的起点位置 后边有一个属性background-size规定背景的大小，30 X 15px  50% 0 都是乘以父元素的宽高。
+             * 0 100%,//结束点的位置 和上类似
+             * from(transparent),//起点的颜色
+             * color-stop(.5,transparent), //中间某一个点必须达到这个颜色，表示变化过程  .5b表示这个渐变范围长度的总长的50%
+             * color-stop(.5,#d86707),//同上
+             * to(#d86707)),//结束段的颜色
+             */
+            background-image:-webkit-gradient(linear,50% 0,0 100%,from(transparent),color-stop(.5,transparent),color-stop(.5,#fff),to(#fff)),
+                -webkit-gradient(linear,50% 0,100% 100%,from(transparent),color-stop(.5,transparent),color-stop(.5,#fff),to(#fff));
+            background-size:30px 15px;
+            background-repeat:repeat-x;
+            background-position:-15px 100%;
+        }
+
+        .demo1{
+            width:300px;
+            height:100px;
+            background-color:lightblue;
+            clip-path: polygon(
+                0% 15%,
+                5% 0%,
+                10% 15%,
+                15% 0%,
+                20% 15%,
+                25% 0%,
+                30% 15%,
+                35% 0%,
+                40% 15%,
+                45% 0%,
+                50% 15%,
+                55% 0%,
+                60% 15%,
+                65% 0%,
+                70% 15%,
+                75% 0%,
+                80% 15%,
+                85% 0%,
+                90% 15%,
+                95% 0%,
+                100% 15%,
+                100% 100%,
+                0% 100%
+            );
+            margin-top:-15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo0"></div>
+    <div class="demo1"></div>
+</body>
+</html>
