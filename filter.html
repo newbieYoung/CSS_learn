@@ -50,6 +50,16 @@
         .demo12{
             filter: url(#blur);/* svg */
         }
+        .demo13{
+            width: 0;
+            height: 0;
+            border-radius: 45%;
+            box-sizing: border-box;
+            border: 100px solid #000;
+            border-bottom: 100px solid transparent;
+            background-color: #b5932f;
+            filter: blur(20px) contrast(30);
+        }
     </style>
 </head>
 <body>
@@ -73,5 +83,6 @@
     <img src="./images/flower.jpg" alt="" class="demo demo10">
     <img src="./images/flower.jpg" alt="" class="demo demo11">
     <img src="./images/flower.jpg" alt="" class="demo demo12">
+    <div class="demo13"></div>
 </body>
 </html>
