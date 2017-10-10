@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒阴影</title>
+	<style type="text/css">
+		div{
+			width:300px;
+			height:100px;
+			border:1px solid #000;
+			margin-bottom:20px;
+		}
+		.demo1{
+			/* 单边阴影 */
+			box-shadow:0 -5px 5px -4px orange;
+		}
+		.demo2{
+			/* 内单边阴影 */
+			box-shadow:inset 0 4px 5px -4px orange;
+		}
+		.demo3{
+			/* 多层阴影 */
+			box-shadow: -5px 0 5px red,0 5px 5px blue, 5px 0 5px green, 0 -5px 5px orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo1"></div>
+	<div class="demo2"></div>
+	<div class="demo3"></div>
+</body>
+</html>
