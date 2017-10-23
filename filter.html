@@ -60,6 +60,37 @@
             background-color: #b5932f;
             filter: blur(20px) contrast(30);
         }
+        /* 高斯模糊背景图效果 */
+        .demo14{
+            width:282px;
+            height:282px;
+            background-image: linear-gradient(180deg, red, #f19090);
+            position: relative;
+            margin-top:50px;
+        }
+        .demo14:after{
+            content:'';
+            width:180px;
+            height:180px;
+            background-color:#fff;
+            border-radius:90px;
+            position: absolute;
+            bottom:-50px;
+            left:-50px;
+            filter:blur(70px);
+        }
+        .demo14:before{
+            content:'';
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 120px solid #fff;
+            position: absolute;
+            right:-40px;
+            bottom:0px;
+            filter:blur(50px);
+        }
     </style>
 </head>
 <body>
@@ -84,5 +115,6 @@
     <img src="./images/flower.jpg" alt="" class="demo demo11">
     <img src="./images/flower.jpg" alt="" class="demo demo12">
     <div class="demo13"></div>
+    <div class="demo14"></div>
 </body>
 </html>
