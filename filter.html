@@ -105,6 +105,18 @@
             filter:blur(40px);
             mix-blend-mode: overlay;
         }
+
+        /* 纯色图片的高斯模糊效果 */
+        .pure-blur{
+            width:282px;
+            height:282px;
+            overflow: hidden;
+        }
+        .pure-blur img{
+            margin:0;
+            padding:0;
+            filter:blur(20px);
+        }
     </style>
 </head>
 <body>
@@ -117,7 +129,7 @@
     </svg>
     <img src="./images/flower.jpg" alt="" class="demo">
     <img src="./images/flower.jpg" alt="" class="demo demo1">
-    <img src="./images/pure.png" alt="" class="demo demo1">
+    <div class="pure-blur"><img src="./images/pure.png" alt="" class="demo demo1"></div>
     <div class="demo2"></div>
     <img src="./images/flower.jpg" alt="" class="demo demo3">
     <img src="./images/flower.jpg" alt="" class="demo demo4">
