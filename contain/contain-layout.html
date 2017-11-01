@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>change left</title>
+    <style>
+        * { margin: 0; padding: 0;}
+        div {
+            /* display: grid;
+            grid-template-rows: 1fr 2fr 1fr;
+            grid-template-columns: 1fr 3fr;
+            grid-gap: 15px; */
+
+            height: 100vh;
+            box-sizing: border-box;
+            padding: 4px;
+            border-radius: 3px;
+            background-color: #063AF2;
+        }
+
+        header {
+            height: 10px;
+            /* grid-column: 1 / 5; */
+            background-color: #F4024B;
+        }
+        aside {
+            height: 10px;
+            /* grid-column: 1 / 2; */
+            background-color: #04ED57;
+        }
+        article {
+            position: relative;
+            z-index: 1;
+            background-color: #FFE32A;
+
+            /*       height: 100px;
+                  overflow: hidden; */
+
+            height: 200px;
+            contain: layout size;
+            overflow: hidden;
+        }
+        article b {
+            display: block;
+            /* position: absolute; */
+            width: 20px;
+            height: 20px;
+            margin-bottom: 10px;
+            background-color: #43BF39;
+        }
+        article b.hide {
+            display: none;
+        }
+        footer {
+            height: 10px;
+            /* grid-column: 1 / 5; */
+            background-color: #910CFB;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <header></header>
+    <aside></aside>
+    <article></article>
+    <footer></footer>
+</div>
+
+<script>
+    window.onload = function(){
+        const $article = document.querySelector('article');
+        let counter = 0;
+        const tid = setInterval(function(){
+            const $newEle = document.createElement('b');
+            // $newEle.style.top = Math.random()*400 + 'px';
+            // $newEle.style.left = Math.random()*200 + 'px';
+
+            $article.appendChild($newEle);
+            counter++;
+
+            if(counter === 20)
+                clearInterval(tid);
+
+        }, 100);
+
+        $article.addEventListener('click', function(){
+            const $bs = document.querySelectorAll('article b');
+            $bs.forEach(($item)=>{
+                $item.classList.toggle('hide');
+        })
+        })
+    }
+</script>
+</body>
+</html>
