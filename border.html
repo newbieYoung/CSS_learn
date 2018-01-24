@@ -41,6 +41,14 @@
 			-moz-border-image:url(images/border.png) 27 stretch; 
     		-webkit-border-image:url(images/border.png) 27 stretch;
 		}
+		.border-image-gradient{
+			border:3px solid;
+			border-image: linear-gradient(-225deg, #6D5A42 0%, #FCEDAE 100%) 3;
+			/* 下边的百分比是相对于容器的宽度而言，而不是相对于文字的长度 */
+			background-image: -webkit-linear-gradient(left,#6D5A42 40%, #FCEDAE 60%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 		.border-radius{
 			/**
 			 * border-radius半径值与border-width值等于或小于0时，元素内角为直角；
@@ -92,6 +100,7 @@
 	<div class="border-image-repeat"></div>
 	<div class="border-image-round"></div>
 	<div class="border-image-stretch"></div>
+	<div class="border-image-gradient"></div>
 	<div class="border-radius-circle"></div>
 	<div class="border-radius-semicircle"></div>
 	<div class="border-radius-quartercircle"></div>
