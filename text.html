@@ -6,13 +6,16 @@
 	<style type="text/css">
 		/**
 		 * word-wrap:break-word;允许长单词或URL地址换行到下一行
-		 * white-space:nowrap;强制不换行
+		 * word-break:和word-wrap的区别在于word-wrap是控制单词之间的换行与否，而word-break是控制单词内的换行与否
+		 * white-space:nowrap;强制不换行（主要是在pre等部分标签中起作用）
 		 * text-overflow:ellipsis;超出部分隐藏且以省略号形式出现
 		 * font-size为奇数时可能导致android设备中line-height垂直居中不生效
 		 */
 		.text-wrap{
 			width:100px;
 			word-wrap:break-word;
+			word-break: break-all;
+			white-space: pre-wrap;
 			border:1px solid #fff;
 		}
 		.text-hidden{
