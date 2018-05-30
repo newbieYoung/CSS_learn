@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>overflow</title>
+	<style>
+		/**
+		 * overflow:hidden;不意味着会隐藏元素内的全部子元素，比如如果子元素是absolute、fixed定位且定位父元素为外部元素时。
+		 */
+		.demo0{
+			font-size:0;
+		}
+		.demo0 .item1,
+		.demo0 .item2{
+			display:inline-block;
+			width:200px;
+			height:200px;
+			border:1px solid #000;
+			margin-left:10px;
+			overflow: hidden;
+		}
+		.demo0 .item1{
+			position:relative;
+		}
+		.demo0 .item2:after,
+		.demo0 .item1:after{
+			position: absolute;
+			right:0;
+			top:0;
+			display: inline-block;
+			content:'';
+			width:100px;
+			height:300px;
+			background-color:gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo0">
+		<div class="item1"></div>
+		<div class="item2"></div>
+	</div>
+</body>
+</html>
