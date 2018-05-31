@@ -18,6 +18,8 @@
          * background-size百分比是相当于元素自身的宽高而言；
          * border-radius百分比是相当于元素自身的宽高而言；
          * transform百分比是相当于元素自身的宽高而言；
+         * 
+         * background-position百分比无效
          */
         .static-parent{
             width:500px;
@@ -73,6 +75,9 @@
             line-height:200%;
             position:fixed;
             background-color:pink;
+            background-image:url(images/border.png);
+            background-size:100% 50%;
+            background-repeat: no-repeat;
         }
     </style>
 </head>
