@@ -19,7 +19,9 @@
          * border-radius百分比是相当于元素自身的宽高而言；
          * transform百分比是相当于元素自身的宽高而言；
          * 
-         * background-position百分比无效
+         * background-position百分比和其它的百分比单位表现都不一样，
+         * positionX = (容器的宽度-图片的宽度) * percentX;
+         * positionY = (容器的高度-图片的高度) * percentY;
          */
         .static-parent{
             width:500px;
@@ -48,6 +50,7 @@
             line-height:200%;/* 4px */
             position:relative;
             background-color:pink;
+
         }
 
         .absolute-element{
@@ -79,6 +82,19 @@
             background-size:100% 50%;
             background-repeat: no-repeat;
         }
+
+        .background-position-elememt{
+            width:200px;
+            height:300px;
+            background-image:url(images/border.png);
+            background-repeat: no-repeat;
+            background-position: -11% -6%;
+            /* positionX = (容器的宽度-图片的宽度) * percentX; */
+            /* positionX = (200-81) * -11% = -13.09; */
+            /* positionY = (容器的高度-图片的高度) * percentY; */
+            /* positionY = (300-81) * -6% = -13.14; */
+            background-color:gray;
+        }
     </style>
 </head>
 <body>
@@ -89,5 +105,6 @@
     <div class="relative-element">relative</div>
     <div class="absolute-element">absolute</div>
     <div class="fixed-element">fixed</div>
+    <div class="background-position-elememt">background-position</div>
 </body>
 </html>
