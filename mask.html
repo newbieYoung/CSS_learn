@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mask遮罩</title>
+    <style>
+        .demo0{
+            -webkit-mask-image: linear-gradient(to bottom, transparent 25%, black 75%);
+            mask-image: linear-gradient(to bottom, transparent 25%, black 75%);
+        }
+        .demo1{
+            width:300px;
+            height:200px;
+            background-image:url(./images/blend.png);
+            background-size:100% 100%;
+            background-repeat: no-repeat;
+            -webkit-mask-image: radial-gradient(ellipse 90% 80% at 48% 78%, black 40%, transparent 50%);
+            mask-image: radial-gradient(ellipse 90% 80% at 48% 78%, black 40%, transparent 50%);
+        }
+        .demo2{
+            -webkit-mask-image: url(./images/image-mask.png);
+            mask-image: url(./images/image-mask.png);
+            -webkit-mask-size:100% 100%;
+            mask-size:100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <img class="demo0" src="./images/blend.png" alt="">
+    <div class="demo1"></div>
+    <img class="demo2" src="./images/blend.png" alt="">
+</body>
+</html>
