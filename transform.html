@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>transform</title>
     <style>
-        /* 单一变换，原点不变 */
+        /* 单一变换，原点在中心 */
         .container{
             font-size:0;
         }
@@ -32,7 +32,7 @@
             transform:skew(10deg,20deg);
         }
 
-        /* 单一变换，原点变 */
+        /* 单一变换，原点在左上角 */
         .container1 .demo{
             transform-origin: 0 0;
             background-color:lightgray;
@@ -40,7 +40,7 @@
 
         /* 复合变换，从左至右执行*/
 
-        /* 复合变换，原点不变 */
+        /* 复合变换，原点在中心 */
         .container2 .demo{
             background-color:lightpink;
         }
@@ -51,7 +51,7 @@
             transform:translate(20px,40px) skew(10deg,20deg);
         }
 
-        /* 复合变换，原点变 */
+        /* 复合变换，原点在左上角 */
         .container2.container3 .demo{
             transform-origin: 0 0;
             background-color:lightgreen;
