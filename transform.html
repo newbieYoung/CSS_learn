@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transform</title>
+    <style>
+        /* 单一变换，原点不变 */
+        .container{
+            font-size:0;
+        }
+        .demo{
+            display:inline-block;
+            width:300px;
+            height:50px;
+            background-color:lightblue;
+            margin:20px;
+            font-size:12px;
+            line-height:50px;
+            text-align: center;
+            transition:transform 1s linear;
+        }
+        .demo3:hover{
+            transform:scale(1.2);
+        }
+        .demo1:hover{
+            transform:rotate(45deg);
+        }
+        .demo2:hover{
+            transform:translate(10px,20px);
+        }
+        .demo4:hover{
+            transform:skew(10deg,20deg);
+        }
+
+        /* 单一变换，原点变 */
+        .container1 .demo{
+            transform-origin: 0 0;
+            background-color:lightgray;
+        }
+
+        /* 复合变换，从左至右执行*/
+
+        /* 复合变换，原点不变 */
+        .container2 .demo{
+            background-color:lightpink;
+        }
+        .container2 .demo1:hover{
+            transform:scale(1.2) rotate(45deg);
+        }
+        .container2 .demo2:hover{
+            transform:translate(20px,40px) skew(10deg,20deg);
+        }
+
+        /* 复合变换，原点变 */
+        .container2.container3 .demo{
+            transform-origin: 0 0;
+            background-color:lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="demo demo3">scale(1.2)</div>
+        <div class="demo demo1">rotate(45deg)</div>
+        <div class="demo demo2">translate(20px,40px)</div>
+        <div class="demo demo4">skew(10deg,20deg)</div>
+    </div>
+    <div class="container1">
+        <div class="demo demo3">scale(1.2)</div>
+        <div class="demo demo1">rotate(45deg)</div>
+        <div class="demo demo2">translate(20px,40px)</div>
+        <div class="demo demo4">skew(10deg,20deg)</div>
+    </div>
+    <div class="container2">
+        <div class="demo demo1">scale(1.2) rotate(45deg)</div>
+        <div class="demo demo2">translate(20px,40px) skew(10deg,20deg)</div>
+    </div>
+    <div class="container2 container3">
+        <div class="demo demo1">scale(1.2) rotate(45deg)</div>
+        <div class="demo demo2">translate(20px,40px) skew(10deg,20deg)</div>
+    </div>
+</body>
+</html>
