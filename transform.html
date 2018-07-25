@@ -19,17 +19,18 @@
             text-align: center;
             transition:transform 1s linear;
         }
+        /* 加上translateZ(0)主要是解决文字在变换中变模糊的问题，这个问题在普通屏幕上很明显，在retina屏幕则不会 */
         .demo3:hover{
-            transform:scale(1.2);
+            transform:translateZ(0) scale(1.2) ;
         }
         .demo1:hover{
-            transform:rotate(45deg);
+            transform:translateZ(0) rotate(45deg);
         }
         .demo2:hover{
-            transform:translate(10px,20px);
+            transform:translateZ(0) translate(10px,20px);
         }
         .demo4:hover{
-            transform:skew(10deg,20deg);
+            transform:translateZ(0) skew(10deg,20deg);
         }
 
         /* 单一变换，原点在左上角 */
