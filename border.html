@@ -13,41 +13,34 @@
 		}
 		.border-color{
 			/* 在firefox中使用border-colors属性时，border-style不能为none */
-			border:10px solid transparent;
+			border:27px solid transparent;
 			/* 目前只有firefox支持 */
 			-moz-border-top-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
 			-moz-border-right-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
 			-moz-border-left-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
 			-moz-border-bottom-colors:#a0a #909 #808 #707 #606 #505 #404 #303;
 		}
+		.border-image-slice{
+			border-width:27px;
+			border-style:solid;
+			border-image-source:url(images/border.png);
+			border-image-slice:14 27 27 14;/* 图片会被四条线划分为九块，分别对应盒子模型中边框的九个区域，slice则表示四条线距离图片边缘的距离 */
+			border-image-repeat:repeat;
+		}
 		.border-image-repeat{
-			border-width:10px;
-			/* 在firefox中使用border-image属性时，border-style不能为none */
+			border-width:27px;
 			border-style:solid;
-			-moz-border-image:url(images/border.png) 27 repeat; 
-    		-webkit-border-image:url(images/border.png) 27 repeat;
-		}
-		.border-image-round{
-			border-width:10px;
-			/* 在firefox中使用border-image属性时，border-style不能为none */
-			border-style:solid;
-			-moz-border-image:url(images/border.png) 27 round; 
-    		-webkit-border-image:url(images/border.png) 27 round;
-		}
-		.border-image-stretch{
-			border-width:10px;
-			/* 在firefox中使用border-image属性时，border-style不能为none */
-			border-style:solid;
-			-moz-border-image:url(images/border.png) 27 stretch; 
-    		-webkit-border-image:url(images/border.png) 27 stretch;
+			border-image-source:url(images/border.png);
+			border-image-slice:27;
+			border-image-repeat:stretch;/* 拉伸图片以填充边框 */
+			border-image-repeat:round;/* 平铺图片，当不能整数次平铺时，根据情况放大或缩小图像 */
+			border-image-repeat:repeat;/* 平铺图片 */
 		}
 		.border-image-gradient{
-			border:3px solid;
-			border-image: linear-gradient(-225deg, #6D5A42 0%, #FCEDAE 100%) 3;
-			/* 下边的百分比是相对于容器的宽度而言，而不是相对于文字的长度 */
-			background-image: -webkit-linear-gradient(left,#6D5A42 40%, #FCEDAE 60%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
+			border:27px solid;
+			border-image-source:linear-gradient(-225deg, #6D5A42 0%, #FCEDAE 100%);
+			border-image-slice:1;
+			position: relative;
 		}
 		.border-radius{
 			/**
@@ -97,9 +90,10 @@
 </head>
 <body>
 	<div class="border-color border-radius"></div>
+	<div class="border-image-slice"></div>
+	<img src="./images/border-image-slice-demo.png" alt="border-image-slice例子1">
+	<img src="./images/border-image-slice-demo2.png" alt="border-image-slice例子2">
 	<div class="border-image-repeat"></div>
-	<div class="border-image-round"></div>
-	<div class="border-image-stretch"></div>
 	<div class="border-image-gradient"></div>
 	<div class="border-radius-circle"></div>
 	<div class="border-radius-semicircle"></div>
