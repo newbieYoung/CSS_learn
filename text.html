@@ -89,9 +89,38 @@
 			font-size:36px;
 			text-shadow: -5px 0 0 #FF2F93, 0 5px 0 #45FBC1;
 		}
+
+		/* flex布局文字不换行超出隐藏 */
+		.flex-text {
+			display: flex;
+			align-items: center;
+		}
+		.flex-text .fixed-size {
+			width: 100px;
+			height: 100px;
+			background-color:#999;
+		}
+		.flex-text .content-text {
+			width: 0;
+			flex: 1;
+		}
+		.flex-text .content-text > * {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
 	</style>
 </head>
 <body>
+	<div class="flex-text">
+		<div class="fixed-size">&nbsp;</div>
+		<div class="content-text">
+			<h4 class="name">a name</h4>
+			<p class="info">a info</p>
+			<p class="notice">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+	</div>
+
 	<p class="text-gradient">文字渐变文</p>
 
 	<p class="text-shadow">文字阴影</p>
