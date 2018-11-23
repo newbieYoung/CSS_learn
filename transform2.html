@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>从最终的投影效果上来看使用2D场景中scaleX可以模拟3D场景中的rotateY</title>
+    <style>
+        .container{
+            font-size:0;
+        }
+        .coin{
+            display:inline-block;
+            width:320px;
+            height:320px;
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            position: relative;
+        }
+        .coin .head{
+            content:'';
+            display:inline-block;
+            width:198px;
+            height:198px;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            position: absolute;
+            background-image:url(./images/coin/texture.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            margin:auto;
+            border-radius:50%;
+        }
+        .coin-0{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/0.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-22-5{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/22.5.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-22-5 .head{
+            transform: scaleX(0.75) translateX(-4px);
+        }
+        .coin-45{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/45.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-45 .head{
+            transform: scaleX(0.5) translateX(-12px);
+        }
+        .coin-67-5{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/67.5.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-67-5 .head{
+            transform: scaleX(0.25) translateX(-40px);
+        }
+        .coin-h-0{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/h-0.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-h-22-5{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/h-22.5.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-h-45{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/h-45.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-h-67-5{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/h-67.5.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+        .coin-90{
+            width:320px;
+            height:320px;
+            background-image:url(./images/coin/90.png);
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="coin coin-0"><div class="head"></div></div>
+        <div class="coin coin-22-5"><div class="head"></div></div>
+        <div class="coin coin-45"><div class="head"></div></div>
+        <div class="coin coin-67-5"><div class="head"></div></div>
+        <div class="coin coin-90"></div>
+    </div>
+    <div class="container">
+        <div class="coin coin-h-0"></div>
+        <div class="coin coin-h-22-5"></div>
+        <div class="coin coin-h-45"></div>
+        <div class="coin coin-h-67-5"></div>
+        <div class="coin coin-90"></div>
+    </div>
+</body>
+</html>
