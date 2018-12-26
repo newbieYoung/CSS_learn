@@ -56,6 +56,22 @@
 			width:400px;
 			text-align: center;
 		}
+
+		.container.text{
+			text-align:center;
+		}
+		.v-center-h-center-5{
+			display: inline-block;
+		    vertical-align: middle;
+		    width: auto;
+		    height: auto;
+		}
+		.container.text:after{
+			content: '';
+		    display: inline-block;
+		    vertical-align: middle;
+		    height: 100%;
+		}
 		/* 填充剩余区域 */
 		.fill-rest{
 			width:500px;
@@ -90,6 +106,12 @@
 	<div class="container table">
 		<div class="table-cell">
 			<div class="v-center-h-center-4">垂直水平居中四：table 高度可以不固定</div>
+		</div>
+	</div>
+	<div class="container text">
+		<div class="v-center-h-center-5">
+			<p>垂直水平居中五</p>
+			<p>利用inline-block的vertical-align:middle去对齐after伪元素，宽度均可不固定</p>
 		</div>
 	</div>
 	<div class="fill-rest">
