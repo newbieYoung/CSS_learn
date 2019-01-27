@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完全填充 缩放比例和缩放中心计算</title>
+    <style>
+        body{
+            padding:50px;
+        }
+        .parent{
+            width:400px;
+            height:600px;
+            padding-top:100px;
+            background-color:gray;
+            box-sizing: border-box;
+        }
+        .parent .child{
+            width:300px;
+            height:400px;
+            background-color:pink;
+            margin:auto;
+            transition:transform 2s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+    <script>
+        window.onload = function(){
+            var $parent = document.querySelector('.parent');
+            var $child = document.querySelector('.child');
+
+            var pRect = $parent.getBoundingClientRect();
+            var cRect = $child.getBoundingClientRect();
+
+            var top = cRect.top - pRect.top;
+            var bottom = pRect.bottom - cRect.bottom;
+
+            var unfoldScale = pRect.height/cRect.height;
+            $child.style.transformOrigin = '50% '+(top/(bottom+top)*100)+'%';
+            $child.style.transform = 'scale('+unfoldScale+')';
+        }
+    </script>
+</body>
+</html>
