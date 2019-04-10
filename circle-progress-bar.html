@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>环形进度条</title>
+    <style>
+        .demo1-bg1{
+            width: 100px;
+            height: 100px;
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 10px red inset;
+        }
+        .demo1-bg2-1,.demo1-bg2-2{
+            position: relative;
+            margin: 0;
+            padding: 0;
+            -webkit-box-flex: 1;
+            height: 80px;
+            background: #fff;
+            border: 10px solid grey;
+        }
+        .demo1-bg2-1{
+            border-radius: 50px 0 0 50px;
+            border-color: grey transparent grey grey;
+            transform-origin: 100% 50%;
+            z-index: 1;
+        }
+        .demo1-bg2-2{
+            border-radius: 0 50px 50px 0;
+            border-color: grey grey grey transparent;
+            transform-origin: 0 50%;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo1-bg1">
+        <div class="demo1-bg2-1"></div>
+        <div class="demo1-bg2-2" style="transform:rotate(36deg);"></div>
+    </div>
+    <img src="./images/demo-circle-progress.jpg" alt="">
+</body>
+</html>
