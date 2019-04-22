@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transform matrix</title>
+    <style>
+        .parent{
+            width:400px;
+            height:400px;
+            background-color:gray;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            margin-top:10px;
+        }
+        .parent .child{
+            width:200px;
+            height:200px;
+            background-color:lightblue;
+            transform: scale(0.2410714285714286) translateX(-31.111111111111107px) translateY(-110.67259259259258px) rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+    <script>
+        window.onload = function(){
+            var $childs = document.querySelectorAll('.parent .child');
+            var transform = window.getComputedStyle($childs[0])['transform'];
+            $childs[1].style.transform = transform;
+            console.log(transform);
+        }
+    </script>
+</body>
+</html>
