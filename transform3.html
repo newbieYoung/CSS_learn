@@ -8,16 +8,18 @@
             width:400px;
             height:400px;
             background-color:gray;
-            display:flex;
-            align-items: center;
-            justify-content: center;
-            margin-top:10px;
+            margin-left:10px;
+            position: relative;
+            display:inline-block;
         }
         .parent .child{
-            width:200px;
-            height:200px;
+            width:1400px;
+            height:1400px;
             background-color:lightblue;
-            transform: scale(0.2410714285714286) translateX(-31.111111111111107px) translateY(-110.67259259259258px) rotate(0deg);
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%) scale(0.2412345) translateX(-31.1234567px) translateY(-110.1234567px) rotate(0deg);
         }
     </style>
 </head>
@@ -31,9 +33,13 @@
     <script>
         window.onload = function(){
             var $childs = document.querySelectorAll('.parent .child');
+
             var transform = window.getComputedStyle($childs[0])['transform'];
-            $childs[1].style.transform = transform;
             console.log(transform);
+            $childs[1].style.transform = transform;
+
+            console.log($childs[0].getBoundingClientRect().top);
+            console.log($childs[1].getBoundingClientRect().top);
         }
     </script>
 </body>
