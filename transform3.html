@@ -4,42 +4,227 @@
     <meta charset="UTF-8">
     <title>transform matrix</title>
     <style>
-        .parent{
-            width:400px;
-            height:400px;
-            background-color:gray;
-            margin-left:10px;
-            position: relative;
-            display:inline-block;
+        ul{
+            list-style: none;
+            margin:0;
+            padding:0;
         }
-        .parent .child{
-            width:1400px;
-            height:1400px;
-            background-color:lightblue;
+        .matrix-demo{
+            margin:100px;
+            font-size:0;
+        }
+        .matrix-demo .coordinate{
+            display: inline-block;
+            width:500px;
+            height:500px;
+            border:1px solid #000;
+            position: relative;
+            vertical-align: top;
+        }
+        .matrix-demo .coordinate .y-line,
+        .matrix-demo .coordinate .x-line{
+            position: absolute;
+            margin:auto;
+            display:flex;
+        }
+        .matrix-demo .coordinate .y-line li,
+        .matrix-demo .coordinate .x-line li{
+            font-size:8px;
+            color:red;
+            flex:1;
+            text-align: center;
+            font-weight:600;
+        }
+        .matrix-demo .coordinate .x-line{
+            left:0;
+            right:0;
+            top:0px;
+            width:96%;
+            height:20px;
+        }
+        .matrix-demo .coordinate .y-line{
+            bottom:0;
+            top:0;
+            right:0;
+            height:96%;
+            width:20px;
+            flex-direction: column;
+        }
+        .matrix-demo .coordinate .y-line li{
+            line-height: 20px;
+        }
+        .matrix-demo .coordinate #demo{
+            background-color:blue;
             position: absolute;
             top:50%;
             left:50%;
-            transform: translate(-50%,-50%) scale(0.2412345) translateX(-31.1234567px) translateY(-110.1234567px) rotate(0deg);
+            transform: translate(-50%,-50%);
+        }
+        .matrix-demo .params{
+            display:inline-block;
+            height:100%;
+            vertical-align: top;
+            margin-left:50px;
+        }
+        .matrix-demo .params li{
+            margin-bottom:10px;
+        }
+        .matrix-demo .params .name{
+            font-size:16px;
+            color:#000;
+            vertical-align: top;
+        }
+        .matrix-demo .params input{
+            height:22px;
+            box-sizing: border-box;
+            vertical-align: top;
+            margin-left:20px;
+        }
+        .matrix-demo .coordinate .c-lines{
+            position: absolute;
+            top:0;
+            left:0;
+            width:500px;
+            height:500px;
         }
     </style>
 </head>
 <body>
-    <div class="parent">
-        <div class="child"></div>
-    </div>
-    <div class="parent">
-        <div class="child"></div>
+    <div class="matrix-demo">
+        <div class="coordinate">
+            <ul class="x-line">
+                <li>-230</li>
+                <li>-210</li>
+                <li>-190</li>
+                <li>-170</li>
+                <li>-150</li>
+                <li>-130</li>
+                <li>-110</li>
+                <li>-90</li>
+                <li>-70</li>
+                <li>-50</li>
+                <li>-30</li>
+                <li>-10</li>
+                <li>10</li>
+                <li>30</li>
+                <li>50</li>
+                <li>70</li>
+                <li>90</li>
+                <li>110</li>
+                <li>130</li>
+                <li>150</li>
+                <li>170</li>
+                <li>190</li>
+                <li>210</li>
+                <li>230</li>
+            </ul>
+            <ul class="y-line">
+                <li>230</li>
+                <li>210</li>
+                <li>190</li>
+                <li>170</li>
+                <li>150</li>
+                <li>130</li>
+                <li>110</li>
+                <li>90</li>
+                <li>70</li>
+                <li>50</li>
+                <li>30</li>
+                <li>10</li>
+                <li>-10</li>
+                <li>-30</li>
+                <li>-50</li>
+                <li>-70</li>
+                <li>-90</li>
+                <li>-110</li>
+                <li>-130</li>
+                <li>-150</li>
+                <li>-170</li>
+                <li>-190</li>
+                <li>-210</li>
+                <li>-230</li>
+            </ul>
+            <canvas class="c-lines"></canvas>
+            <div id="demo"></div>
+        </div>
+        <div class="params">
+            <ul>
+                <li><span class="name">宽度</span><input id="demo-width" type="text" value="50"></li>
+                <li><span class="name">高度</span><input id="demo-height" type="text" value="50"></li>
+                <li><span class="name">scaleX</span><input id="demo-scaleX" type="text" value="1"></li>
+                <li><span class="name">scaleY</span><input id="demo-scaleY" type="text" value="1"></li>
+                <li><span class="name">translateX (px)</span><input id="demo-translateX"  type="text" value="0"></li>
+                <li><span class="name">translateY (px)</span><input id="demo-translateY" type="text" value="0"></li>
+                <li><span class="name">rotate (deg)</span><input id="demo-rotate" type="text" value="0"></li>
+                <!--<li><span class="name">skewX (deg)</span><input id="demo-skewX"  type="text" value="0"></li>-->
+                <!--<li><span class="name">skewY (deg)</span><input id="demo-skewY" type="text" value="0"></li>-->
+            </ul>
+        </div>
     </div>
     <script>
         window.onload = function(){
-            var $childs = document.querySelectorAll('.parent .child');
+            var $lines = document.querySelector('.c-lines');
 
-            var transform = window.getComputedStyle($childs[0])['transform'];
-            console.log(transform);
-            $childs[1].style.transform = transform;
+            var $demo = document.querySelector('#demo');
+            var $demoWidth = document.querySelector('#demo-width');
+            var $demoHeight = document.querySelector('#demo-height');
+            var $demoScaleX = document.querySelector('#demo-scaleX');
+            var $demoScaleY = document.querySelector('#demo-scaleY');
+            var $demoTranslateX = document.querySelector('#demo-translateX');
+            var $demoTranslateY = document.querySelector('#demo-translateY');
+            var $demoRotate = document.querySelector('#demo-rotate');
 
-            console.log($childs[0].getBoundingClientRect().top);
-            console.log($childs[1].getBoundingClientRect().top);
+            initLines();
+            update();
+
+            //更新元素
+            function update(){
+                var width = $demoWidth.value;
+                var height = $demoHeight.value;
+                var scaleX = $demoScaleX.value;
+                var scaleY = $demoScaleY.value;
+                var translateX = $demoTranslateX.value;
+                var translateY = $demoTranslateY.value;
+                var rotate = $demoRotate.value;
+
+                var transform = 'translate(-50%,-50%) ';//初始化垂直水平居中
+                transform += 'scaleX('+scaleX+') ';
+                transform += 'scaleY('+scaleY+') ';
+                transform += 'translateX('+translateX+'px) ';
+                transform += 'translateY('+translateY+'px) ';
+                transform += 'rotate('+rotate+'deg) ';
+
+                $demo.style.width = width+'px';
+                $demo.style.height = height+'px';
+                $demo.style.transform = transform;
+            }
+
+            //绘制坐标系
+            function initLines(){
+                var rect = $lines.getBoundingClientRect();
+                var dpr = window.devicePixelRatio;
+
+                var width = rect.width * dpr;
+                var height = rect.height * dpr
+                var gap = 20 * dpr;
+
+                $lines.width = width;
+                $lines.height = height;
+
+                var ctx = $lines.getContext('2d');
+                ctx.lineWidth = 1;
+
+                ctx.beginPath();
+                for(var i=gap;i<width;i+=gap){//刻度线
+                    ctx.moveTo(i,0);
+                    ctx.lineTo(i,height);
+                    ctx.moveTo(0,i);
+                    ctx.lineTo(width,i);
+                }
+                ctx.closePath();
+                ctx.strokeStyle = '#ccc';
+                ctx.stroke();
+            }
         }
     </script>
 </body>
