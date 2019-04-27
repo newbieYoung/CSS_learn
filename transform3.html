@@ -21,28 +21,28 @@
             position: relative;
             vertical-align: top;
         }
-        .matrix-demo .coordinate .y-line,
-        .matrix-demo .coordinate .x-line{
+        .matrix-demo .coordinate .y-line-num,
+        .matrix-demo .coordinate .x-line-num{
             position: absolute;
             margin:auto;
             display:flex;
         }
-        .matrix-demo .coordinate .y-line li,
-        .matrix-demo .coordinate .x-line li{
+        .matrix-demo .coordinate .y-line-num li,
+        .matrix-demo .coordinate .x-line-num li{
             font-size:8px;
             color:red;
             flex:1;
             text-align: center;
             font-weight:600;
         }
-        .matrix-demo .coordinate .x-line{
+        .matrix-demo .coordinate .x-line-num{
             left:0;
             right:0;
             top:0px;
             width:96%;
             height:20px;
         }
-        .matrix-demo .coordinate .y-line{
+        .matrix-demo .coordinate .y-line-num{
             bottom:0;
             top:0;
             right:0;
@@ -50,7 +50,7 @@
             width:20px;
             flex-direction: column;
         }
-        .matrix-demo .coordinate .y-line li{
+        .matrix-demo .coordinate .y-line-num li{
             line-height: 20px;
         }
         .matrix-demo .coordinate #demo{
@@ -96,7 +96,8 @@
 <body>
     <div class="matrix-demo">
         <div class="coordinate">
-            <ul class="x-line">
+            <div class="x-line"></div>
+            <ul class="x-line-num">
                 <li>-230</li>
                 <li>-210</li>
                 <li>-190</li>
@@ -122,7 +123,7 @@
                 <li>210</li>
                 <li>230</li>
             </ul>
-            <ul class="y-line">
+            <ul class="y-line-num">
                 <li>230</li>
                 <li>210</li>
                 <li>190</li>
@@ -159,10 +160,11 @@
                 <li><span class="name">scaleX</span><input class="value" id="demo-scaleX" type="text" value="1"></li>
                 <li><span class="name">scaleY</span><input class="value" id="demo-scaleY" type="text" value="1"></li>
                 <li><span class="name">translateX (px)</span><input class="value" id="demo-translateX"  type="text" value="0"></li>
-                <li><span class="name">translateY (px)</span><input class="value" id="demo-translateY" type="text" value="0"></li>
-                <li><span class="name">rotate (deg)</span><input class="value" id="demo-rotate" type="text" value="20"></li>
+                <li><span class="name">translateY (px)</span><input class="value" id="demo-translateY" type="text" value="10"></li>
+                <li><span class="name">rotate (deg)</span><input class="value" id="demo-rotate" type="text" value="0"></li>
                 <!--<li><span class="name">skewX (deg)</span><input class="value" id="demo-skewX"  type="text" value="0"></li>-->
                 <!--<li><span class="name">skewY (deg)</span><input class="value" id="demo-skewY" type="text" value="0"></li>-->
+                <li><span class="name">initPoints</span><span class="value" id="init-points"></span></li>
                 <li><span class="name">matrix</span><span class="value" id="demo-matrix"></span></li>
                 <li><span class="name">matrixPoints</span><span class="value" id="matrix-points" style="color:red;"></span></li>
                 <li><span class="name">transformPoints</span><span class="value" id="transform-points" style="color:blue;"></span></li>
@@ -187,6 +189,7 @@
 
             var $matrixPoints = document.querySelector('#matrix-points');
             var $transformPoints = document.querySelector('#transform-points');
+            var $initPoints = document.querySelector('#init-points');
 
             var initPoints = [];//初始坐标点
 
@@ -233,6 +236,7 @@
                 pCtx.clearRect(0,0,$cPoints.width,$cPoints.height);
 
                 initPoints = getInitPoints(width,height);
+                $initPoints.innerText = JSON.stringify(initPoints);
 
                 var scaleX = parseFloat($demoScaleX.value);
                 var scaleY = parseFloat($demoScaleY.value);
@@ -303,9 +307,9 @@
                     ctx.moveTo(0,i);
                     ctx.lineTo(width,i);
                 }
-                ctx.closePath();
                 ctx.strokeStyle = '#ccc';
                 ctx.stroke();
+                ctx.closePath();
             }
 
             //以中心为坐标原点，获得初始坐标点
