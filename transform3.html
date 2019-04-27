@@ -67,6 +67,7 @@
             height:100%;
             vertical-align: top;
             margin-left:50px;
+            max-width:500px;
         }
         .matrix-demo .params li{
             margin-bottom:10px;
@@ -82,7 +83,7 @@
             box-sizing: border-box;
             vertical-align: top;
         }
-        .matrix-demo .coordinate .matrix-demo,
+        .matrix-demo .coordinate .c-points,
         .matrix-demo .coordinate .c-lines{
             position: absolute;
             top:0;
@@ -148,7 +149,7 @@
                 <li>-230</li>
             </ul>
             <canvas class="c-lines"></canvas>
-            <canvas class="matrix-demo"></canvas>
+            <canvas class="c-points"></canvas>
             <div id="demo"></div>
         </div>
         <div class="params">
@@ -159,17 +160,19 @@
                 <li><span class="name">scaleY</span><input class="value" id="demo-scaleY" type="text" value="1"></li>
                 <li><span class="name">translateX (px)</span><input class="value" id="demo-translateX"  type="text" value="0"></li>
                 <li><span class="name">translateY (px)</span><input class="value" id="demo-translateY" type="text" value="0"></li>
-                <li><span class="name">rotate (deg)</span><input class="value" id="demo-rotate" type="text" value="0"></li>
+                <li><span class="name">rotate (deg)</span><input class="value" id="demo-rotate" type="text" value="20"></li>
                 <!--<li><span class="name">skewX (deg)</span><input class="value" id="demo-skewX"  type="text" value="0"></li>-->
                 <!--<li><span class="name">skewY (deg)</span><input class="value" id="demo-skewY" type="text" value="0"></li>-->
                 <li><span class="name">matrix</span><span class="value" id="demo-matrix"></span></li>
-                <li><span class="name">matrixPoints</span><span class="value" id="matrix-points"></span></li>
+                <li><span class="name">matrixPoints</span><span class="value" id="matrix-points" style="color:red;"></span></li>
+                <li><span class="name">transformPoints</span><span class="value" id="transform-points" style="color:blue;"></span></li>
             </ul>
         </div>
     </div>
     <script>
         window.onload = function(){
-            var $lines = document.querySelector('.c-lines');
+            var $cLines = document.querySelector('.c-lines');
+            var $cPoints = document.querySelector('.c-points');
 
             var $demo = document.querySelector('#demo');
             var $params = document.querySelector('.params');
@@ -183,6 +186,7 @@
             var $demoMatrix = document.querySelector('#demo-matrix');
 
             var $matrixPoints = document.querySelector('#matrix-points');
+            var $transformPoints = document.querySelector('#transform-points');
 
             var initPoints = [];//初始坐标点
 
@@ -193,10 +197,40 @@
                 update();
             });
 
+            //绘制坐标点
+            function drawPoints(points,color,ctx){
+                var dpr = window.devicePixelRatio;
+                var rectPoints = getInitPoints($cPoints.width/dpr,$cPoints.height/dpr);
+
+                //转换为canvas绘图坐标系
+                var ps = [];
+                for(var i=0;i<points.length;i++){
+                    ps.push({
+                        x : (points[i].x - rectPoints[0].x) * dpr,
+                        y : (rectPoints[0].y - points[i].y) * dpr
+                    });
+                }
+
+                //开始绘制
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.moveTo(ps[0].x,ps[0].y);
+                for(i=1;i<ps.length;i++){
+                    ctx.lineTo(ps[i].x,ps[i].y);
+                }
+                ctx.lineTo(ps[0].x,ps[0].y);
+                ctx.stroke();
+                ctx.closePath();
+            }
+
             //更新元素
             function update(){
                 var width = $demoWidth.value;
                 var height = $demoHeight.value;
+
+                var pCtx = $cPoints.getContext('2d');
+                pCtx.clearRect(0,0,$cPoints.width,$cPoints.height);
 
                 initPoints = getInitPoints(width,height);
 
@@ -221,14 +255,16 @@
                 var matrix = getTransformMatrix(transform);
                 $demoMatrix.innerText = matrix;
 
-                var curPoints = [];
+                var transformPoints = [];
                 for(var i=0;i<initPoints.length;i++){
-                    curPoints.push({
+                    transformPoints.push({
                         x : initPoints[i].x,
                         y : initPoints[i].y
                     })
                 }
-                curPoints = getTransformPoints(curPoints,scaleX,scaleY,translateX,translateY,rotate);
+                transformPoints = getTransformPoints(transformPoints,scaleX,scaleY,translateX,translateY,rotate);
+                $transformPoints.innerText = JSON.stringify(transformPoints);
+                drawPoints(transformPoints,'blue',pCtx);
 
                 var matrixPoints = [];
                 for(var i=0;i<initPoints.length;i++){
@@ -239,6 +275,37 @@
                     matrixPoints.push(getMatrixPoints(p,matrix));
                 }
                 $matrixPoints.innerText = JSON.stringify(matrixPoints);
+                drawPoints(matrixPoints,'red',pCtx);
+            }
+
+            //绘制坐标系
+            function initLines(){
+                var rect = $cLines.getBoundingClientRect();
+                var dpr = window.devicePixelRatio;
+
+                var width = rect.width * dpr;
+                var height = rect.height * dpr
+                var gap = 20 * dpr;
+
+                $cLines.width = width;
+                $cLines.height = height;
+
+                $cPoints.width = $cLines.width;//重新设置canvas尺寸会导致以前绘制的内容消失
+                $cPoints.height = $cLines.height;
+
+                var ctx = $cLines.getContext('2d');
+                ctx.lineWidth = 1;
+
+                ctx.beginPath();
+                for(var i=gap;i<width;i+=gap){//刻度线
+                    ctx.moveTo(i,0);
+                    ctx.lineTo(i,height);
+                    ctx.moveTo(0,i);
+                    ctx.lineTo(width,i);
+                }
+                ctx.closePath();
+                ctx.strokeStyle = '#ccc';
+                ctx.stroke();
             }
 
             //以中心为坐标原点，获得初始坐标点
@@ -401,33 +468,6 @@
                 document.body.removeChild($div);
 
                 return matrix;
-            }
-
-            //绘制坐标系
-            function initLines(){
-                var rect = $lines.getBoundingClientRect();
-                var dpr = window.devicePixelRatio;
-
-                var width = rect.width * dpr;
-                var height = rect.height * dpr
-                var gap = 20 * dpr;
-
-                $lines.width = width;
-                $lines.height = height;
-
-                var ctx = $lines.getContext('2d');
-                ctx.lineWidth = 1;
-
-                ctx.beginPath();
-                for(var i=gap;i<width;i+=gap){//刻度线
-                    ctx.moveTo(i,0);
-                    ctx.lineTo(i,height);
-                    ctx.moveTo(0,i);
-                    ctx.lineTo(width,i);
-                }
-                ctx.closePath();
-                ctx.strokeStyle = '#ccc';
-                ctx.stroke();
             }
         }
     </script>
