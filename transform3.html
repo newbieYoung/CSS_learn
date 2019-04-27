@@ -54,11 +54,13 @@
             line-height: 20px;
         }
         .matrix-demo .coordinate #demo{
-            background-color:blue;
             position: absolute;
             top:50%;
             left:50%;
             transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            background-color:gray;
+            opacity:.4;
         }
         .matrix-demo .params{
             display:inline-block;
@@ -68,18 +70,19 @@
         }
         .matrix-demo .params li{
             margin-bottom:10px;
+            font-size:16px;
         }
         .matrix-demo .params .name{
-            font-size:16px;
             color:#000;
             vertical-align: top;
+            margin-right:20px;
         }
-        .matrix-demo .params input{
+        .matrix-demo .params .value{
             height:22px;
             box-sizing: border-box;
             vertical-align: top;
-            margin-left:20px;
         }
+        .matrix-demo .coordinate .matrix-demo,
         .matrix-demo .coordinate .c-lines{
             position: absolute;
             top:0;
@@ -145,19 +148,22 @@
                 <li>-230</li>
             </ul>
             <canvas class="c-lines"></canvas>
+            <canvas class="matrix-demo"></canvas>
             <div id="demo"></div>
         </div>
         <div class="params">
             <ul>
-                <li><span class="name">宽度</span><input id="demo-width" type="text" value="50"></li>
-                <li><span class="name">高度</span><input id="demo-height" type="text" value="50"></li>
-                <li><span class="name">scaleX</span><input id="demo-scaleX" type="text" value="1"></li>
-                <li><span class="name">scaleY</span><input id="demo-scaleY" type="text" value="1"></li>
-                <li><span class="name">translateX (px)</span><input id="demo-translateX"  type="text" value="0"></li>
-                <li><span class="name">translateY (px)</span><input id="demo-translateY" type="text" value="0"></li>
-                <li><span class="name">rotate (deg)</span><input id="demo-rotate" type="text" value="0"></li>
-                <!--<li><span class="name">skewX (deg)</span><input id="demo-skewX"  type="text" value="0"></li>-->
-                <!--<li><span class="name">skewY (deg)</span><input id="demo-skewY" type="text" value="0"></li>-->
+                <li><span class="name">宽度</span><input class="value" id="demo-width" type="text" value="50"></li>
+                <li><span class="name">高度</span><input class="value" id="demo-height" type="text" value="50"></li>
+                <li><span class="name">scaleX</span><input class="value" id="demo-scaleX" type="text" value="1"></li>
+                <li><span class="name">scaleY</span><input class="value" id="demo-scaleY" type="text" value="1"></li>
+                <li><span class="name">translateX (px)</span><input class="value" id="demo-translateX"  type="text" value="0"></li>
+                <li><span class="name">translateY (px)</span><input class="value" id="demo-translateY" type="text" value="0"></li>
+                <li><span class="name">rotate (deg)</span><input class="value" id="demo-rotate" type="text" value="0"></li>
+                <!--<li><span class="name">skewX (deg)</span><input class="value" id="demo-skewX"  type="text" value="0"></li>-->
+                <!--<li><span class="name">skewY (deg)</span><input class="value" id="demo-skewY" type="text" value="0"></li>-->
+                <li><span class="name">matrix</span><span class="value" id="demo-matrix"></span></li>
+                <li><span class="name">matrixPoints</span><span class="value" id="matrix-points"></span></li>
             </ul>
         </div>
     </div>
@@ -166,6 +172,7 @@
             var $lines = document.querySelector('.c-lines');
 
             var $demo = document.querySelector('#demo');
+            var $params = document.querySelector('.params');
             var $demoWidth = document.querySelector('#demo-width');
             var $demoHeight = document.querySelector('#demo-height');
             var $demoScaleX = document.querySelector('#demo-scaleX');
@@ -173,21 +180,34 @@
             var $demoTranslateX = document.querySelector('#demo-translateX');
             var $demoTranslateY = document.querySelector('#demo-translateY');
             var $demoRotate = document.querySelector('#demo-rotate');
+            var $demoMatrix = document.querySelector('#demo-matrix');
+
+            var $matrixPoints = document.querySelector('#matrix-points');
+
+            var initPoints = [];//初始坐标点
 
             initLines();
             update();
+
+            $params.addEventListener('keyup',function(){
+                update();
+            });
 
             //更新元素
             function update(){
                 var width = $demoWidth.value;
                 var height = $demoHeight.value;
-                var scaleX = $demoScaleX.value;
-                var scaleY = $demoScaleY.value;
-                var translateX = $demoTranslateX.value;
-                var translateY = $demoTranslateY.value;
-                var rotate = $demoRotate.value;
 
-                var transform = 'translate(-50%,-50%) ';//初始化垂直水平居中
+                initPoints = getInitPoints(width,height);
+
+                var scaleX = parseFloat($demoScaleX.value);
+                var scaleY = parseFloat($demoScaleY.value);
+                var translateX = parseFloat($demoTranslateX.value);
+                var translateY = parseFloat($demoTranslateY.value);
+                var rotate = parseFloat($demoRotate.value);
+
+                var centerTransform = 'translate(-50%,-50%)';//初始化垂直水平居中
+                var transform = '';
                 transform += 'scaleX('+scaleX+') ';
                 transform += 'scaleY('+scaleY+') ';
                 transform += 'translateX('+translateX+'px) ';
@@ -196,7 +216,191 @@
 
                 $demo.style.width = width+'px';
                 $demo.style.height = height+'px';
-                $demo.style.transform = transform;
+                $demo.style.transform = centerTransform+' '+transform;
+
+                var matrix = getTransformMatrix(transform);
+                $demoMatrix.innerText = matrix;
+
+                var curPoints = [];
+                for(var i=0;i<initPoints.length;i++){
+                    curPoints.push({
+                        x : initPoints[i].x,
+                        y : initPoints[i].y
+                    })
+                }
+                curPoints = getTransformPoints(curPoints,scaleX,scaleY,translateX,translateY,rotate);
+
+                var matrixPoints = [];
+                for(var i=0;i<initPoints.length;i++){
+                    var p = {
+                        x : initPoints[i].x,
+                        y : initPoints[i].y
+                    };
+                    matrixPoints.push(getMatrixPoints(p,matrix));
+                }
+                $matrixPoints.innerText = JSON.stringify(matrixPoints);
+            }
+
+            //以中心为坐标原点，获得初始坐标点
+            function getInitPoints(width,height){
+                var points = [];
+                var absX = width/2;
+                var absY = height/2;
+
+                points.push({
+                    x : -absX,
+                    y : absY
+                });
+
+                points.push({
+                    x : absX,
+                    y : absY
+                });
+
+                points.push({
+                    x : absX,
+                    y : -absY
+                });
+
+                points.push({
+                    x : -absX,
+                    y : -absY
+                });
+
+                return points;
+            }
+
+            //计算新的坐标点
+            function getTransformPoints(points,scaleX,scaleY,moveX,moveY,rotateAngle){
+                var points0 = [];
+                for(var i=0;i<points.length;i++){
+                    var item = points[i];
+                    points0.push({
+                        x:item.x,
+                        y:item.y
+                    });
+                }
+
+                var points1 = [];
+                for(var i=0;i<points0.length;i++){
+                    var p1 = scalePoint(points0[i],scaleX,scaleY);
+                    var p2 = translatePoint(p1,moveX,moveY);
+                    points1.push(p2);
+                }
+                var center1 = getPointsCenter(points1);
+
+                var points2 = [];
+                for(var i=0;i<points1.length;i++){
+                    var p3 = rotatePoint(points1[i],center1,rotateAngle);
+                    points2.push(p3);
+                }
+
+                return points2;
+            }
+
+            //计算矩阵变换后的坐标点
+            function getMatrixPoints(p,mat){
+                //解析矩阵
+                var start = mat.indexOf('matrix(');
+                var end = mat.indexOf(')');
+                mat = mat.substring(start+7,end);
+                mat = mat.split(',');
+                for(var i=0;i<mat.length;i++){
+                    mat[i] = parseFloat(mat[i]);
+                }
+
+                // var mat3 = [mat[0],mat[2],mat[4],
+                //             mat[1],mat[3],mat[5],
+                //             0,0,1];
+
+                // var mat3 = [a,c,e,
+                //             b,d,f,
+                //             0,0,1];
+
+                // var newX = a * x + c * y + 1 * e;
+                // var newY = b * x + d * y + 1 * f;
+                // var newZ = 0 + 0 +1;
+
+                //计算变换后点坐标
+                var newX = mat[0] * p.x + mat[2] * p.y + 1 * mat[4];
+                var newY = mat[1] * p.x + mat[3] * p.y + 1 * mat[5];
+                var newZ = 0 + 0 +1;
+
+                return {x:newX/newZ,y:newY/newZ};
+            }
+
+
+            //获得坐标中心
+            function getPointsCenter(points){
+                var center = {
+                    x : (points[0].x + points[2].x)/2,
+                    y : (points[0].y + points[2].y)/2,
+                }
+                return center;
+            }
+
+            //点坐标缩放
+            function scalePoint(point,numX,numY){
+                point.x = point.x * numX;
+                point.y = point.y * numY;
+                return point;
+            }
+
+            //点坐标位移
+           function translatePoint(point,x,y){
+                point.x = point.x + x;
+                point.y = point.y - y;
+                return point;
+            }
+
+            //点坐标旋转
+            function rotatePoint(p1,p0,angle){
+                //任意点(x,y)，绕一个坐标点(rx0,ry0)逆时针旋转a角度后的新的坐标设为(x0, y0)
+                //x0= (x - rx0)*cos(a) - (y - ry0)*sin(a) + rx0 ;
+                //y0= (x - rx0)*sin(a) + (y - ry0)*cos(a) + ry0 ;
+
+                var a = - angle / 180 * Math.PI;
+                var rx0 = p0.x;
+                var ry0 = p0.y;
+
+                var x = p1.x;
+                var y = p1.y;
+
+                var p = {
+                    x : (x - rx0)*Math.cos(a) - (y - ry0)*Math.sin(a) + rx0,
+                    y : (x - rx0)*Math.sin(a) + (y - ry0)*Math.cos(a) + ry0
+                }
+
+                return p;
+            }
+
+            //获得transform属性对应的矩阵形式
+            function getTransformMatrix(transform){
+                var $div = document.createElement('div');
+                $div.style.visibility = 'hidden';
+                $div.style.position = 'fixed';
+
+                //处理transform属性的兼容性
+                var transformProperty = 'transform';
+                if('transform' in $div.style){
+                    transformProperty='transform'
+                } else if( 'WebkitTransform' in $div.style ){
+                    transformProperty='webkitTransform'
+                } else if('MozTransform' in $div.style){
+                    transformProperty='MozTransform'
+                } else if('OTransform' in $div.style){
+                    transformProperty='OTransform'
+                }
+
+                $div.style[transformProperty] = transform;
+                document.body.appendChild($div);
+
+                var style = window.getComputedStyle($div);
+                var matrix = style[transformProperty];
+
+                document.body.removeChild($div);
+
+                return matrix;
             }
 
             //绘制坐标系
