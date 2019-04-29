@@ -53,6 +53,7 @@
         .matrix-demo .coordinate .y-line-num li{
             line-height: 20px;
         }
+        .matrix-demo .coordinate #origin,
         .matrix-demo .coordinate #demo{
             position: absolute;
             top:50%;
@@ -61,6 +62,9 @@
             box-sizing: border-box;
             background-color:gray;
             opacity:.4;
+        }
+        .matrix-demo .coordinate #origin{
+            background-color:yellow;
         }
         .matrix-demo .params{
             display:inline-block;
@@ -151,19 +155,20 @@
             </ul>
             <canvas class="c-lines"></canvas>
             <canvas class="c-points"></canvas>
+            <div id="origin"></div>
             <div id="demo"></div>
         </div>
         <div class="params">
             <ul>
                 <li><span class="name">宽度</span><input class="value" id="demo-width" type="text" value="100"></li>
                 <li><span class="name">高度</span><input class="value" id="demo-height" type="text" value="100"></li>
-                <li><span class="name">scaleX</span><input class="value" id="demo-scaleX" type="text" value="1"></li>
-                <li><span class="name">scaleY</span><input class="value" id="demo-scaleY" type="text" value="1"></li>
-                <li><span class="name">translateX (px)</span><input class="value" id="demo-translateX"  type="text" value="0"></li>
-                <li><span class="name">translateY (px)</span><input class="value" id="demo-translateY" type="text" value="10"></li>
-                <li><span class="name">rotate (deg)</span><input class="value" id="demo-rotate" type="text" value="0"></li>
-                <!--<li><span class="name">skewX (deg)</span><input class="value" id="demo-skewX"  type="text" value="0"></li>-->
-                <!--<li><span class="name">skewY (deg)</span><input class="value" id="demo-skewY" type="text" value="0"></li>-->
+                <li><span class="name">scaleX</span><input class="value" id="demo-scaleX" type="text" value="0.5"></li>
+                <li><span class="name">scaleY</span><input class="value" id="demo-scaleY" type="text" value="2"></li>
+                <li><span class="name">translateX (px)</span><input class="value" id="demo-translateX"  type="text" value="10"></li>
+                <li><span class="name">translateY (px)</span><input class="value" id="demo-translateY" type="text" value="20"></li>
+                <li><span class="name">rotate (deg)</span><input class="value" id="demo-rotate" type="text" value="30"></li>
+                <li><span class="name">skewX (deg)</span><input class="value" id="demo-skewX"  type="text" value="2"></li>
+                <li><span class="name">skewY (deg)</span><input class="value" id="demo-skewY" type="text" value="0.5"></li>
                 <li><span class="name">initPoints</span><span class="value" id="init-points"></span></li>
                 <li><span class="name">matrix</span><span class="value" id="demo-matrix" style="color:red;"></span></li>
                 <li><span class="name">matrixPoints</span><span class="value" id="matrix-points" style="color:red;"></span></li>
@@ -178,6 +183,7 @@
             var $cPoints = document.querySelector('.c-points');
 
             var $demo = document.querySelector('#demo');
+            var $origin = document.querySelector('#origin');
             var $params = document.querySelector('.params');
             var $demoWidth = document.querySelector('#demo-width');
             var $demoHeight = document.querySelector('#demo-height');
@@ -186,6 +192,8 @@
             var $demoTranslateX = document.querySelector('#demo-translateX');
             var $demoTranslateY = document.querySelector('#demo-translateY');
             var $demoRotate = document.querySelector('#demo-rotate');
+            var $demoSkewX = document.querySelector('#demo-skewX');
+            var $demoSkewY = document.querySelector('#demo-skewY');
 
             var $demoMatrix = document.querySelector('#demo-matrix');
             var $matrixPoints = document.querySelector('#matrix-points');
@@ -246,6 +254,8 @@
                 var translateX = parseFloat($demoTranslateX.value);
                 var translateY = parseFloat($demoTranslateY.value);
                 var rotate = parseFloat($demoRotate.value);
+                var skewX = parseFloat($demoSkewX.value);
+                var skewY = parseFloat($demoSkewY.value);
 
                 var centerTransform = 'translate(-50%,-50%)';//初始化垂直水平居中
                 var transform = '';
@@ -254,10 +264,15 @@
                 transform += 'translateX('+translateX+'px) ';
                 transform += 'translateY('+translateY+'px) ';
                 transform += 'rotate('+rotate+'deg) ';
+                transform += 'skewX('+skewX+'deg)';
+                transform += 'skewY('+skewY+'deg)';
+
 
                 $demo.style.width = width+'px';
                 $demo.style.height = height+'px';
                 $demo.style.transform = centerTransform+' '+transform;
+                $origin.style.width = width+'px';
+                $origin.style.height = height+'px';
 
                 var matrix = getTransformMatrix(transform);
                 $demoMatrix.innerText = matrix;
