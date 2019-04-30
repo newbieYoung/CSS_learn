@@ -10,7 +10,7 @@
             padding:0;
         }
         .matrix-demo{
-            margin:100px;
+            margin:10px;
             font-size:0;
         }
         .matrix-demo .coordinate{
@@ -428,6 +428,7 @@
 
                 var style = window.getComputedStyle($div);
                 var matrix = style[transformProperty];
+                console.log(matrix);
 
                 document.body.removeChild($div);
 
