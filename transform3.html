@@ -302,6 +302,7 @@
                     };
                     fixedPoints.push(getMatrixPoints(p,fixedMatrix));
                 }
+                fixedPoints.reverse();//顶点顺序发生了变化，需要颠倒
                 $fixedPoints.innerText = JSON.stringify(fixedPoints);
                 drawPoints(fixedPoints,'blue',pCtx);
             }
