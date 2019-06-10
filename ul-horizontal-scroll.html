@@ -22,13 +22,13 @@
             height:90px;
             overflow:scroll;
         }
-        /* 让列表宽度大于容器宽度，然后容器设置为overflow:scroll即可；如果列表元素个数以及单个宽度不定，则需要动态计算 */
+        /* 让列表宽度大于容器宽度，然后容器设置为overflow:scroll即可；设置white-space:nowrap让ul宽度自适应内容 */
         .container ul{
             height:80px;
-            width:720px;
             padding:0;
             margin:0;
             font-size:0;
+            white-space: nowrap;
         }
         .container ul li{
             width:50px;
