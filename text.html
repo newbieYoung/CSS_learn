@@ -1,9 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>文字</title>
 	<style type="text/css">
+		/**
+		 * text-stroke 文字描边会影响字体粗细且描边外形和字体外形相关，没办法自定义
+		 */
+		.text-stroke {
+			font-size: 30px;
+			color: #000;
+			-webkit-text-stroke: 1px red;
+		}
+
+		/**
+		 * 文字阴影模拟描边效果不好
+		 */
+		.strok-outside {
+			font-size: 30px;
+			color: #000;
+			text-shadow: 0 1px red, 1px 0 red, -1px 0 red, 0 -1px red;
+		}
+
 		/**
 		 * word-wrap:break-word;允许长单词或URL地址换行到下一行
 		 * word-break:和word-wrap的区别在于word-wrap是控制单词之间的换行与否，而word-break是控制单词内的换行与否
@@ -11,82 +30,91 @@
 		 * text-overflow:ellipsis;超出部分隐藏且以省略号形式出现
 		 * font-size为奇数时可能导致android设备中line-height垂直居中不生效
 		 */
-		.text-wrap{
-			width:100px;
-			word-wrap:break-word;
+		.text-wrap {
+			width: 100px;
+			word-wrap: break-word;
 			word-break: break-all;
 			white-space: pre-wrap;
-			border:1px solid #fff;
+			border: 1px solid #fff;
 		}
-		.text-hidden{
-			width:100px;
+
+		.text-hidden {
+			width: 100px;
 			white-space: nowrap;
 			overflow: hidden;
-			text-overflow:ellipsis;
+			text-overflow: ellipsis;
 		}
-		.table-text-hidden{
-			width:200px;
-			table-layout:fixed;/* 表格为固定布局时表格的宽高将完全由表格本身觉得，否则表格内容可能会影响整个表格的宽高 */
+
+		.table-text-hidden {
+			width: 200px;
+			table-layout: fixed;
+			/* 表格为固定布局时表格的宽高将完全由表格本身觉得，否则表格内容可能会影响整个表格的宽高 */
 		}
-		.table-text-hidden td{
-			width:25%;
+
+		.table-text-hidden td {
+			width: 25%;
 			white-space: nowrap;
 			overflow: hidden;
-			text-overflow:ellipsis;
+			text-overflow: ellipsis;
 		}
+
 		/* webkit内核浏览器限制文字行数 */
-		.max-line-two-webkit{
+		.max-line-two-webkit {
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
 			-webkit-line-clamp: 2;
-			overflow:hidden;
+			overflow: hidden;
 
-			width:200px;
+			width: 200px;
 		}
+
 		/* 其它浏览器限制文字行数 */
-		.max-line-two-others{
+		.max-line-two-others {
 			position: relative;
-			display:inline-block;
-			width:200px;
-			height:40px;
-			line-height:20px;
-			overflow:hidden;
+			display: inline-block;
+			width: 200px;
+			height: 40px;
+			line-height: 20px;
+			overflow: hidden;
 		}
+
 		.max-line-two-others:after {
-			content:"...";
-			position:absolute;
-			bottom:0;
-			right:0;
+			content: "...";
+			position: absolute;
+			bottom: 0;
+			right: 0;
 			padding: 0 5px;
 			background-color: #fff;
 		}
+
 		/* 文字对齐 */
-		.text-align-justify{
-			width:495px;
-			padding:10px;
+		.text-align-justify {
+			width: 495px;
+			padding: 10px;
 			text-align: justify;
-			border:1px solid #000;
+			border: 1px solid #000;
 		}
-		.text-align-left{
-			width:495px;
-			padding:10px;
+
+		.text-align-left {
+			width: 495px;
+			padding: 10px;
 			text-align: left;
-			border:1px solid #000;
+			border: 1px solid #000;
 		}
 
 		/* 文字渐变 */
-		.text-gradient{
-			display:inline-block;
-			font-size:36px;
+		.text-gradient {
+			display: inline-block;
+			font-size: 36px;
 			/* 下边的百分比是相对于容器的宽度而言，而不是相对于文字的长度 */
-			background-image: -webkit-linear-gradient(left,#D81159, #E53A40 5%, #FFBC42 20%, #75D701 30%, #30A9DE 40%,#D81159 50%, #E53A40 60%, #FFBC42 70%, #75D701 80%, #30A9DE 90%,#D81159);
+			background-image: -webkit-linear-gradient(left, #D81159, #E53A40 5%, #FFBC42 20%, #75D701 30%, #30A9DE 40%, #D81159 50%, #E53A40 60%, #FFBC42 70%, #75D701 80%, #30A9DE 90%, #D81159);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
 
 		/* 文字阴影 */
-		.text-shadow{
-			font-size:36px;
+		.text-shadow {
+			font-size: 36px;
 			text-shadow: -5px 0 0 #FF2F93, 0 5px 0 #45FBC1;
 		}
 
@@ -95,29 +123,41 @@
 			display: flex;
 			align-items: center;
 		}
+
 		.flex-text .fixed-size {
 			width: 100px;
 			height: 100px;
-			background-color:#999;
+			background-color: #999;
 		}
+
 		.flex-text .content-text {
 			width: 0;
 			flex: 1;
 		}
-		.flex-text .content-text > * {
+
+		.flex-text .content-text>* {
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
 	</style>
 </head>
+
 <body>
+	<p class="text-stroke">文字描边</p>
+
+	<p class="strok-outside">文字阴影模拟描边</p>
+
 	<div class="flex-text">
 		<div class="fixed-size">&nbsp;</div>
 		<div class="content-text">
 			<h4 class="name">a name</h4>
 			<p class="info">a info</p>
-			<p class="notice">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p class="notice">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+				aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+				fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+				anim id est laborum.</p>
 		</div>
 	</div>
 
@@ -125,12 +165,16 @@
 
 	<p class="text-shadow">文字阴影</p>
 
-	<p class="text-wrap">javascript javascript javascript javascript javascript javascript javascript javascript javascript</p>
-	<p class="text-wrap">11117777777777777777777777111177777777777777777777771111777777777777777777777711117777777777777777</p>
+	<p class="text-wrap">javascript javascript javascript javascript javascript javascript javascript javascript
+		javascript</p>
+	<p class="text-wrap">
+		11117777777777777777777777111177777777777777777777771111777777777777777777777711117777777777777777</p>
 	<p class="text-wrap">我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</p>
 
-	<p class="text-hidden">javascript javascript javascript javascript javascript javascript javascript javascript javascript</p>
-	<p class="text-hidden">11117777777777777777777777111177777777777777777777771111777777777777777777777711117777777777777777</p>
+	<p class="text-hidden">javascript javascript javascript javascript javascript javascript javascript javascript
+		javascript</p>
+	<p class="text-hidden">
+		11117777777777777777777777111177777777777777777777771111777777777777777777777711117777777777777777</p>
 	<p class="text-hidden">我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</p>
 
 	<table class="table-text-hidden">
@@ -159,9 +203,12 @@
 	<div class="max-line-two-webkit">我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</div>
 	<div class="max-line-two-others">我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭吧我们去敲代码吧我们去吃饭</div>
 
-	<p class="text-align-left">整个需求的来龙去脉就是这样子的，其实梳理这个过程的来龙去脉来，一来可以让自己不断反思该过程存在的一些问题，二来呢，因为本次bug确实对大家造成了不好的影响（真的是深感歉意啊！），可以让大家清楚这个事情是怎么发生的，至少大家不会卡得不明不白的。
+	<p class="text-align-left">
+		整个需求的来龙去脉就是这样子的，其实梳理这个过程的来龙去脉来，一来可以让自己不断反思该过程存在的一些问题，二来呢，因为本次bug确实对大家造成了不好的影响（真的是深感歉意啊！），可以让大家清楚这个事情是怎么发生的，至少大家不会卡得不明不白的。
 		写代码万万要小心谨慎，考虑周全啊。这次痛定思痛，吃一堑，长一智吧。愿天下的程序统统没有bug。对，统统没有！！！</p>
-	<p class="text-align-justify">整个需求的来龙去脉就是这样子的，其实梳理这个过程的来龙去脉来，一来可以让自己不断反思该过程存在的一些问题，二来呢，因为本次bug确实对大家造成了不好的影响（真的是深感歉意啊！），可以让大家清楚这个事情是怎么发生的，至少大家不会卡得不明不白的。
+	<p class="text-align-justify">
+		整个需求的来龙去脉就是这样子的，其实梳理这个过程的来龙去脉来，一来可以让自己不断反思该过程存在的一些问题，二来呢，因为本次bug确实对大家造成了不好的影响（真的是深感歉意啊！），可以让大家清楚这个事情是怎么发生的，至少大家不会卡得不明不白的。
 		写代码万万要小心谨慎，考虑周全啊。这次痛定思痛，吃一堑，长一智吧。愿天下的程序统统没有bug。对，统统没有！！！</p>
 </body>
+
 </html>
