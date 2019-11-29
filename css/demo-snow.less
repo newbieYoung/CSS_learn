@@ -28,7 +28,7 @@
 .snow(@n, @i: 1) when (@i =< @n) {
 
   .snow_@{i}{
-    @_scale: `Math.random()*0.5+0.5`;// 0.5-1
+    @_scale: `Math.random()*0.5+0.5`;// 随机大小 0.5-1
     @_left: `Math.random()`; //水平位移
     @_dur1: `(-Math.random() * 4 + 8).toFixed(2)`; // 动画运行时长 4-8 秒，通过不同的时长实现下降速度不一致
     @_delay: `(-Math.random() * 8 + 0.2).toFixed(2)`; // 动画延迟
