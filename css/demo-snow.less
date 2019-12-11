@@ -14,34 +14,40 @@
     margin: 0 auto;
   }
 
-  //雪花初始化大小
   position: absolute;
   top:0;
-  width:20px;
-  height: 20px;
-  background-image:url(../images/particular_snow.png);
-  background-size:100% 100%;
-  background-repeat: no-repeat;
+
+  //雪花初始化大小
+  .snow_inner {
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/particular_snow.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
 }
 
 //随机雪花函数
 .snow(@n, @i: 1) when (@i =< @n) {
 
   .snow_@{i} {
-    @_scale: `Math.random()*0.5+0.5`; // 随机大小 0.5-1
     @_left: `Math.random()`; //水平位移
     @_dur1: `(-Math.random() * 4 + 8).toFixed(2)`; // 动画运行时长 4-8 秒，通过不同的时长实现下降速度不一致
     @_delay: `(-Math.random() * 8 + 0.2).toFixed(2)`; // 动画延迟
     left:~"calc((100vw - 20px) * @{_left})";
     animation:~"__ani-snow__y @{_dur1}s linear infinite";
     animation-delay:~"@{_delay}s";
+  }
+
+  .snow_@{i} .snow_inner {
+    @_scale: `Math.random()*1.2+0.4`; // 随机大小 0.5-1
     transform: scale(@_scale);
   }
 
   .snow(@n, (@i + 1));
 }
 
-.snow(16); //生成雪花的数量
+.snow(25); //生成雪花的数量
 
 @keyframes __ani-snow__y {
   0% {

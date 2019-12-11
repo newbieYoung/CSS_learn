@@ -5,11 +5,6 @@
 .snow {
   position: absolute;
   top: 0;
-  width: 20px;
-  height: 20px;
-  background-image: url(../images/particular_snow.png);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
 }
 .snow_wrap {
   position: relative;
@@ -19,101 +14,212 @@
   background: #0e6345;
   margin: 0 auto;
 }
+.snow .snow_inner {
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/particular_snow.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 .snow_1 {
-  left: calc((100vw - 20px) * 0.2862071945782314);
-  animation: __ani-snow__y 7.05s linear infinite;
-  animation-delay: 0.04s;
-  transform: scale(0.73682972);
+  left: calc((100vw - 20px) * 0.5107906782803873);
+  animation: __ani-snow__y 4.15s linear infinite;
+  animation-delay: -1.23s;
+}
+.snow_1 .snow_inner {
+  transform: scale(0.63834075);
 }
 .snow_2 {
-  left: calc((100vw - 20px) * 0.7259526414296871);
-  animation: __ani-snow__y 7.35s linear infinite;
-  animation-delay: -2.04s;
-  transform: scale(0.96835734);
+  left: calc((100vw - 20px) * 0.5415937429458035);
+  animation: __ani-snow__y 4.21s linear infinite;
+  animation-delay: -0.62s;
+}
+.snow_2 .snow_inner {
+  transform: scale(1.29348295);
 }
 .snow_3 {
-  left: calc((100vw - 20px) * 0.7254128997832954);
-  animation: __ani-snow__y 6.15s linear infinite;
-  animation-delay: -1.10s;
-  transform: scale(0.66533188);
+  left: calc((100vw - 20px) * 0.12130627584862608);
+  animation: __ani-snow__y 4.25s linear infinite;
+  animation-delay: -7.70s;
+}
+.snow_3 .snow_inner {
+  transform: scale(1.58130091);
 }
 .snow_4 {
-  left: calc((100vw - 20px) * 0.5567866012759917);
-  animation: __ani-snow__y 4.95s linear infinite;
-  animation-delay: -1.49s;
-  transform: scale(0.90168616);
+  left: calc((100vw - 20px) * 0.4670982397259529);
+  animation: __ani-snow__y 6.63s linear infinite;
+  animation-delay: -0.81s;
+}
+.snow_4 .snow_inner {
+  transform: scale(0.97043787);
 }
 .snow_5 {
-  left: calc((100vw - 20px) * 0.1678900912244814);
-  animation: __ani-snow__y 7.20s linear infinite;
-  animation-delay: -4.03s;
-  transform: scale(0.7698072);
+  left: calc((100vw - 20px) * 0.984815565852349);
+  animation: __ani-snow__y 6.91s linear infinite;
+  animation-delay: -3.43s;
+}
+.snow_5 .snow_inner {
+  transform: scale(1.59045132);
 }
 .snow_6 {
-  left: calc((100vw - 20px) * 0.7050763498748449);
-  animation: __ani-snow__y 6.90s linear infinite;
-  animation-delay: -1.60s;
-  transform: scale(0.71293089);
+  left: calc((100vw - 20px) * 0.1647842527518535);
+  animation: __ani-snow__y 5.20s linear infinite;
+  animation-delay: -1.20s;
+}
+.snow_6 .snow_inner {
+  transform: scale(0.79178817);
 }
 .snow_7 {
-  left: calc((100vw - 20px) * 0.7188115770990251);
-  animation: __ani-snow__y 7.23s linear infinite;
-  animation-delay: -1.62s;
-  transform: scale(0.68599872);
+  left: calc((100vw - 20px) * 0.14320416177590944);
+  animation: __ani-snow__y 5.18s linear infinite;
+  animation-delay: -1.91s;
+}
+.snow_7 .snow_inner {
+  transform: scale(0.66113774);
 }
 .snow_8 {
-  left: calc((100vw - 20px) * 0.27778767370371416);
-  animation: __ani-snow__y 6.41s linear infinite;
-  animation-delay: -7.03s;
-  transform: scale(0.93046989);
+  left: calc((100vw - 20px) * 0.5287622602109441);
+  animation: __ani-snow__y 6.24s linear infinite;
+  animation-delay: -4.71s;
+}
+.snow_8 .snow_inner {
+  transform: scale(0.99647108);
 }
 .snow_9 {
-  left: calc((100vw - 20px) * 0.7237580121620768);
-  animation: __ani-snow__y 6.10s linear infinite;
-  animation-delay: -4.75s;
-  transform: scale(0.55176802);
+  left: calc((100vw - 20px) * 0.19977394743968402);
+  animation: __ani-snow__y 4.12s linear infinite;
+  animation-delay: 0.19s;
+}
+.snow_9 .snow_inner {
+  transform: scale(0.72595366);
 }
 .snow_10 {
-  left: calc((100vw - 20px) * 0.5596371459012959);
-  animation: __ani-snow__y 5.12s linear infinite;
-  animation-delay: -2.87s;
-  transform: scale(0.82713342);
+  left: calc((100vw - 20px) * 0.7345376687375484);
+  animation: __ani-snow__y 4.11s linear infinite;
+  animation-delay: -5.52s;
+}
+.snow_10 .snow_inner {
+  transform: scale(1.56909246);
 }
 .snow_11 {
-  left: calc((100vw - 20px) * 0.917797421895707);
-  animation: __ani-snow__y 4.33s linear infinite;
-  animation-delay: -4.23s;
-  transform: scale(0.97829172);
+  left: calc((100vw - 20px) * 0.3736002746334224);
+  animation: __ani-snow__y 5.54s linear infinite;
+  animation-delay: -0.32s;
+}
+.snow_11 .snow_inner {
+  transform: scale(0.52816899);
 }
 .snow_12 {
-  left: calc((100vw - 20px) * 0.5285224677933662);
-  animation: __ani-snow__y 5.30s linear infinite;
-  animation-delay: -3.70s;
-  transform: scale(0.56729947);
+  left: calc((100vw - 20px) * 0.04991545828385591);
+  animation: __ani-snow__y 4.20s linear infinite;
+  animation-delay: -5.63s;
+}
+.snow_12 .snow_inner {
+  transform: scale(0.60705335);
 }
 .snow_13 {
-  left: calc((100vw - 20px) * 0.6730179362393949);
-  animation: __ani-snow__y 6.39s linear infinite;
-  animation-delay: -5.28s;
-  transform: scale(0.92002008);
+  left: calc((100vw - 20px) * 0.28095894120242204);
+  animation: __ani-snow__y 5.32s linear infinite;
+  animation-delay: -0.86s;
+}
+.snow_13 .snow_inner {
+  transform: scale(0.57465248);
 }
 .snow_14 {
-  left: calc((100vw - 20px) * 0.6448744833657789);
-  animation: __ani-snow__y 5.53s linear infinite;
-  animation-delay: 0.05s;
-  transform: scale(0.59269358);
+  left: calc((100vw - 20px) * 0.3548623901389387);
+  animation: __ani-snow__y 4.79s linear infinite;
+  animation-delay: -2.30s;
+}
+.snow_14 .snow_inner {
+  transform: scale(0.80812822);
 }
 .snow_15 {
-  left: calc((100vw - 20px) * 0.8446527192738116);
-  animation: __ani-snow__y 7.05s linear infinite;
-  animation-delay: -0.99s;
-  transform: scale(0.73435692);
+  left: calc((100vw - 20px) * 0.8664931166400067);
+  animation: __ani-snow__y 5.17s linear infinite;
+  animation-delay: -2.38s;
+}
+.snow_15 .snow_inner {
+  transform: scale(0.75749826);
 }
 .snow_16 {
-  left: calc((100vw - 20px) * 0.46424633591427056);
-  animation: __ani-snow__y 5.01s linear infinite;
-  animation-delay: -4.90s;
-  transform: scale(0.85253417);
+  left: calc((100vw - 20px) * 0.4171993680213528);
+  animation: __ani-snow__y 5.36s linear infinite;
+  animation-delay: -0.54s;
+}
+.snow_16 .snow_inner {
+  transform: scale(0.55816997);
+}
+.snow_17 {
+  left: calc((100vw - 20px) * 0.6509973927864647);
+  animation: __ani-snow__y 7.26s linear infinite;
+  animation-delay: -5.52s;
+}
+.snow_17 .snow_inner {
+  transform: scale(0.9107814);
+}
+.snow_18 {
+  left: calc((100vw - 20px) * 0.2733617592590518);
+  animation: __ani-snow__y 7.21s linear infinite;
+  animation-delay: -7.42s;
+}
+.snow_18 .snow_inner {
+  transform: scale(1.14088949);
+}
+.snow_19 {
+  left: calc((100vw - 20px) * 0.8039678124804612);
+  animation: __ani-snow__y 5.40s linear infinite;
+  animation-delay: -0.50s;
+}
+.snow_19 .snow_inner {
+  transform: scale(1.47661821);
+}
+.snow_20 {
+  left: calc((100vw - 20px) * 0.14778337196651137);
+  animation: __ani-snow__y 6.07s linear infinite;
+  animation-delay: -1.38s;
+}
+.snow_20 .snow_inner {
+  transform: scale(1.08955136);
+}
+.snow_21 {
+  left: calc((100vw - 20px) * 0.8435124602412365);
+  animation: __ani-snow__y 4.29s linear infinite;
+  animation-delay: -1.39s;
+}
+.snow_21 .snow_inner {
+  transform: scale(1.02138419);
+}
+.snow_22 {
+  left: calc((100vw - 20px) * 0.92478278807272);
+  animation: __ani-snow__y 5.73s linear infinite;
+  animation-delay: -3.13s;
+}
+.snow_22 .snow_inner {
+  transform: scale(1.14044018);
+}
+.snow_23 {
+  left: calc((100vw - 20px) * 0.3776231976553823);
+  animation: __ani-snow__y 4.69s linear infinite;
+  animation-delay: -2.57s;
+}
+.snow_23 .snow_inner {
+  transform: scale(0.88967703);
+}
+.snow_24 {
+  left: calc((100vw - 20px) * 0.8572963690317823);
+  animation: __ani-snow__y 4.11s linear infinite;
+  animation-delay: -2.69s;
+}
+.snow_24 .snow_inner {
+  transform: scale(1.10481438);
+}
+.snow_25 {
+  left: calc((100vw - 20px) * 0.5989303223698599);
+  animation: __ani-snow__y 4.86s linear infinite;
+  animation-delay: -6.75s;
+}
+.snow_25 .snow_inner {
+  transform: scale(0.58298263);
 }
 @keyframes __ani-snow__y {
   0% {
