@@ -5,13 +5,13 @@
 
 //雪花
 .snow {
-  &_wrap{
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      background: rgba(14,99,69,1);
-      margin: 0 auto;
+  &_wrap {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(14, 99, 69, 1);
+    margin: 0 auto;
   }
 
   //雪花初始化大小
@@ -27,21 +27,21 @@
 //随机雪花函数
 .snow(@n, @i: 1) when (@i =< @n) {
 
-  .snow_@{i}{
-    @_scale: `Math.random()*0.5+0.5`;// 随机大小 0.5-1
+  .snow_@{i} {
+    @_scale: `Math.random()*0.5+0.5`; // 随机大小 0.5-1
     @_left: `Math.random()`; //水平位移
     @_dur1: `(-Math.random() * 4 + 8).toFixed(2)`; // 动画运行时长 4-8 秒，通过不同的时长实现下降速度不一致
     @_delay: `(-Math.random() * 8 + 0.2).toFixed(2)`; // 动画延迟
-    left: ~"calc((100vw - 20px) * @{_left})";
-    animation: ~"__ani-snow__y @{_dur1}s linear infinite";
-    animation-delay: ~"@{_delay}s";
-    transform:scale(@_scale);
+    left:~"calc((100vw - 20px) * @{_left})";
+    animation:~"__ani-snow__y @{_dur1}s linear infinite";
+    animation-delay:~"@{_delay}s";
+    transform: scale(@_scale);
   }
 
   .snow(@n, (@i + 1));
 }
 
-.snow(16);//生成雪花的数量
+.snow(16); //生成雪花的数量
 
 @keyframes __ani-snow__y {
   0% {
@@ -54,3 +54,5 @@
     transform: ~"translate3d(0, 100vh, 0)";
   }
 }
+
+/* lessc --js ./css/demo-snow.less ./css/demo-snow.css */
