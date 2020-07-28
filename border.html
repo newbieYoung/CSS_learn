@@ -96,9 +96,24 @@
 			background-color: orange;
 			border-radius:100px / 50px;
 		}
+
+		/* 聊天气泡背景图片中间拉伸 */
+		.border-image-demo1{
+			border-top-width: 39px;
+			border-bottom-width: 39px;
+			border-left-width: 79px;
+			border-right-width: 79px;
+			border-style:solid;
+			width:160px;
+			height:80px;
+			border-image-source:url('./images/chat-bubble.png');
+			border-image-slice:39 79 39 79 fill;
+		}
 	</style>
 </head>
 <body>
+	<div class="border-image-demo1"></div>
+
 	<div class="border-color border-radius"></div>
 	<div class="border-image-slice"></div>
 	<img src="./images/border-image-slice-demo.png" alt="border-image-slice例子1">
